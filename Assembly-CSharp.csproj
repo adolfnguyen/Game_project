@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{709579C2-119B-E823-680A-64A74D6E00BA}</ProjectGuid>
+    <ProjectGuid>{237AB8DD-5E6A-3127-356C-B84A6CDC0A99}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -56,10 +56,24 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Robot.cs" />
-    <Compile Include="Assets\Scripts\RobotAttack.cs" />
-    <Compile Include="Assets\Scripts\AttackTrigger.cs" />
+    <Compile Include="Assets\Scripts\Engine\SpawnZombies.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemies.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Player\RobotAttack.cs" />
+    <Compile Include="Assets\Scripts\Grenade.cs" />
+    <Compile Include="Assets\Scripts\Player\Throwing.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Drones.cs" />
+    <Compile Include="Assets\Scripts\Player\AttackTrigger.cs" />
+    <Compile Include="Assets\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Engine\SingletonMonobehaviour.cs" />
+    <Compile Include="Assets\Scripts\Engine\EventManager.cs" />
+    <Compile Include="Assets\Scripts\RobotShooting.cs" />
+    <Compile Include="Assets\Scripts\Engine\GameEvents.cs" />
+    <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
+    <Compile Include="Assets\Scripts\Engine\UIManager.cs" />
+    <Compile Include="Assets\Scripts\PlayerStatus.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnenmyAttackTrigger.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
