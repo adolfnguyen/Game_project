@@ -13,7 +13,12 @@ public class Player : MonoBehaviour
     public Animator aim;
    
     public Collider2D secondCollider;
-   
+    public bool bendown = false;
+    private bool m_isInvincible = false;
+    [SerializeField] private float invincibilityDurationSeconds;
+    [SerializeField] private float invincibilityDeltaTime;
+    [SerializeField] private GameObject model;
+    private Vector3 m_scaleVec = new Vector3(0.38f, 0.3f, 1f);
     // Start is called before the first frame update
     private void Awake()
     {
@@ -44,21 +49,25 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-
-            rigidbody.velocity = new Vector2(5.0f, rigidbody.velocity.y);
+            if (!bendown)
+            {
+                rigidbody.velocity = new Vector2(5.0f, rigidbody.velocity.y);
+            }
 
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
 
-
-            rigidbody.velocity = new Vector2(-5.0f, rigidbody.velocity.y);
-
+            if (!bendown)
+            {
+                rigidbody.velocity = new Vector2(-5.0f, rigidbody.velocity.y);
+            }
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
         if (Input.GetKeyDown(KeyCode.UpArrow) && m_ground)
         {
+            if(!bendown)
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, 14.0f);
      
             
@@ -69,35 +78,15 @@ public class Player : MonoBehaviour
             secondCollider.enabled = true;
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, rigidbody.velocity.y);
             aim.SetBool("Bending", true);
-
+            bendown = true;
         }
-       /* while (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-
-                rigidbody.velocity = new Vector2(2.0f, rigidbody.velocity.y);
-
-                transform.eulerAngles = new Vector3(0, 0, 0);
-            }
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-
-
-                rigidbody.velocity = new Vector2(-2.0f, rigidbody.velocity.y);
-
-                transform.eulerAngles = new Vector3(0, 180, 0);
-            }
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0.0f);
-            }
-        }*/
+       
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
             secondCollider.enabled = false;
             aim.SetBool("Bending", false);
+            bendown = false;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -121,13 +110,48 @@ public class Player : MonoBehaviour
         }
     
     }
-   // hàm giảm số lượng đạn
-  
-    public void Damage(int dmg)
+    /*public void Damage(int dmg)
     {
         CoreGame.CurHeal -= dmg;
         EventManager.TriggerEvent(GameEvents.UPDATEHEAL);
         Debug.Log("nhập sát thương");
+    }*/
+    public void Damage(int dmg)
+    {
+        if (m_isInvincible) return;
+        CoreGame.CurHeal -= dmg;
+        Debug.Log("nhập sát thương");
+        EventManager.TriggerEvent(GameEvents.UPDATEHEAL);
+        if (CoreGame.CurHeal <= 0)
+        {
+            CoreGame.CurHeal = 0;
+            return;
+        }
+
+        StartCoroutine(BecomeTemporarilyInvincible());
+    }   
+    private IEnumerator BecomeTemporarilyInvincible()
+    {
+        m_isInvincible = true;
+
+        for (float i = 0; i < invincibilityDurationSeconds; i += invincibilityDeltaTime)
+        {
+            if (model.transform.localScale == m_scaleVec)
+            {
+                ScaleModelTo(Vector3.zero);
+            }
+            else
+            {
+                ScaleModelTo(m_scaleVec);
+            }
+            yield return new WaitForSeconds(invincibilityDeltaTime);
+        }
+        ScaleModelTo(m_scaleVec);
+        m_isInvincible = false;
+    }
+    private void ScaleModelTo(Vector3 scale)
+    {
+        model.transform.localScale = scale;
     }
     public void Death()
     {        

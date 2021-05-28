@@ -8,4 +8,5 @@ public class GameEvents
     public const string TAKEDAMAGE = "take damage";
     public const string GAMEOVER = "GAME OVER";
     public const string UPDATEHEAL = "upadate heal";
+    public const string UPDATEGRENADE = "UPDATE GRENADE";
 }

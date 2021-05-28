@@ -10,7 +10,7 @@ public class Throwing : MonoBehaviour
     public float launch= 10f;
     public float distance=10f;
     public float speed=10f;
-
+    public int ngrenade;
     Transform gre;
    // Start is called before the first frame update
    void Start()
@@ -28,8 +28,18 @@ public class Throwing : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            gre = Instantiate(grenade.transform, firePoint.position, firePoint.rotation) as Transform;
-            gre.GetComponent<Rigidbody2D>().velocity = distance * firePoint.right * speed;
+            ngrenade = CoreGame.Grenade;
+            if (ngrenade > 0)
+            {
+                gre = Instantiate(grenade.transform, firePoint.position, firePoint.rotation) as Transform;
+                gre.GetComponent<Rigidbody2D>().velocity = distance * firePoint.right * speed;
+                CoreGame.DecreaseGreande();
+                EventManager.TriggerEvent(GameEvents.UPDATEGRENADE);
+            }
+            else
+            {
+                Debug.Log("het luu dan");
+            }
         }
     }
 }
