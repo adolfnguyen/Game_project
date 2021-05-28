@@ -4,24 +4,23 @@ using System.Collections.Generic;
 using UnityEngine.Experimental.Animations;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
-
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     // các thông số cơ bản cuiar người chơi
-    public int hp;
-    public static int bulletLoad =20;
-
     public bool m_ground ;
     Rigidbody2D rigidbody;
     public Animator aim;
    
     public Collider2D secondCollider;
+    public int ourHeal;
     // Start is called before the first frame update
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         aim = gameObject.GetComponent<Animator>();
         secondCollider.enabled = false;
+        ourHeal = CoreGame.Heal;
     }
     void Start()
     {
@@ -35,6 +34,10 @@ public class Player : MonoBehaviour
 
         aim.SetFloat("force", Mathf.Abs(rigidbody.velocity.x));
         ClickProcess();
+        if (ourHeal <= 0)
+        {
+            Death();
+        }
 
     }
     private void ClickProcess()
@@ -116,15 +119,18 @@ public class Player : MonoBehaviour
             m_ground = false;
 
         }
+    
     }
    // hàm giảm số lượng đạn
-   public static void DecreaseBullet()
-    {
-        bulletLoad--;
-    }
+  
     public void Damage(int dmg)
     {
-        hp -= dmg;
+        ourHeal -= dmg;
     }
-    public static int BulletLoad { get => BulletLoad; set => BulletLoad = value; }
+    public void Death()
+    {        
+        aim.SetBool("Death", true);
+        EventManager.TriggerEvent(GameEvents.GAMEOVER);
+    }
+    
 }

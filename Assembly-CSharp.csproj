@@ -62,18 +62,21 @@
     <Compile Include="Assets\Scripts\Player\RobotAttack.cs" />
     <Compile Include="Assets\Scripts\Grenade.cs" />
     <Compile Include="Assets\Scripts\Player\Throwing.cs" />
+    <Compile Include="Assets\Scripts\Engine\CoreGame.cs" />
     <Compile Include="Assets\Scripts\Enemy\Drones.cs" />
     <Compile Include="Assets\Scripts\Player\AttackTrigger.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\Engine\SingletonMonobehaviour.cs" />
     <Compile Include="Assets\Scripts\Engine\EventManager.cs" />
     <Compile Include="Assets\Scripts\RobotShooting.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnenmyAttackTrigger.cs" />
     <Compile Include="Assets\Scripts\Engine\GameEvents.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Engine\UIManager.cs" />
+    <Compile Include="Assets\Scripts\GrenadeTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerStatus.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnenmyAttackTrigger.cs" />
+    <Compile Include="Assets\Scripts\BulletDrop.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

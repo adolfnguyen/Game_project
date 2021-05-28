@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Throwing : MonoBehaviour
 {
-    public GameObject Grenade;
+    public GameObject grenade;
     public Transform firePoint;
     Rigidbody2D shellInstance;
-    public float launch;
-    public float speed;
+    public float launch= 10f;
+    public float distance=10f;
+    public float speed=10f;
+
+    Transform gre;
    // Start is called before the first frame update
    void Start()
     {
-        
+        shellInstance = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -24,9 +28,8 @@ public class Throwing : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            Instantiate(Grenade, firePoint.position, firePoint.rotation);
-            shellInstance.GetComponent<Rigidbody>().velocity = launch * firePoint.transform.GetChild(0).forward * speed;
-
+            gre = Instantiate(grenade.transform, firePoint.position, firePoint.rotation) as Transform;
+            gre.GetComponent<Rigidbody2D>().velocity = distance * firePoint.right * speed;
         }
     }
 }
