@@ -8,7 +8,7 @@ public class CoreGame : MonoBehaviour
     private static int heal = 1000;
     private static int bullet = 20;
     private static int greanade = 2;
-
+    private static int curheal = 1000;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +37,7 @@ public class CoreGame : MonoBehaviour
             bullet++;
         }
     }
+
     /*public static bool IsGameOver()
         {
             if (state == 1)
@@ -48,6 +49,7 @@ public class CoreGame : MonoBehaviour
         }*/
     public static int State { get => state; set => state = value; }
     public static int Heal { get => heal; set => heal = value; }
+    public static int CurHeal { get => curheal; set => curheal = value; }
     public static int Bullet { get => bullet; set => bullet = value; }
     public static int Grenade { get => greanade; set => greanade = value; }
 }
