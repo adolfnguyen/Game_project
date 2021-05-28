@@ -125,7 +125,7 @@ MonoBehaviour:
   hitPoint: 50
   attackRadius: 1.2
   followRadius: 8
-  trigger: {fileID: 0}
+  trigger: {fileID: 8109654627146009922}
   playerTransform: {fileID: 0}
   enemyAnim: {fileID: 9116497994218103353}
 --- !u!212 &4887794515492085577

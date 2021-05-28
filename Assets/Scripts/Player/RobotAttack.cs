@@ -37,7 +37,7 @@ public class RobotAttack : MonoBehaviour
             {
                 //attacking = false;
                 trigger.enabled = false;
-             aim.SetBool("Attacking", false);
+                aim.SetBool("Attacking", false);
             }
      }
     

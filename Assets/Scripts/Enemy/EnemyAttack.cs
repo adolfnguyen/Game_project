@@ -45,7 +45,8 @@ public class EnemyAttack : Enemies
                     this.transform.position += new Vector3(-GetMoveSpeed() * Time.deltaTime, 0f, 0f);
                     enemyAnim.SetBool("AttackAnim", false);
                     enemyAnim.SetBool("WalkAnim", true);
-                    m_enemySR.flipX = true;
+                    //m_enemySR.flipX = true;
+                    transform.eulerAngles = new Vector3(0, 180, 0);
                     trigger.enabled = false;
                 }
             }
@@ -61,7 +62,8 @@ public class EnemyAttack : Enemies
                     this.transform.position += new Vector3(GetMoveSpeed() * Time.deltaTime, 0f, 0f);
                     enemyAnim.SetBool("AttackAnim", false);
                     enemyAnim.SetBool("WalkAnim", true);
-                    m_enemySR.flipX = false;
+                    //m_enemySR.flipX = false;
+                    transform.eulerAngles = new Vector3(0, 0, 0);
                     trigger.enabled = false;
                 }
             }

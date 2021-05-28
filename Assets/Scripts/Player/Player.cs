@@ -16,6 +16,12 @@ public class Player : MonoBehaviour
     public Animator aim;
    
     public Collider2D secondCollider;
+
+    private bool m_isInvincible = false;
+    [SerializeField] private float invincibilityDurationSeconds;
+    [SerializeField] private float invincibilityDeltaTime;
+    [SerializeField] private GameObject model;
+    private Vector3 m_scaleVec = new Vector3(0.38f, 0.3f, 1f);
     // Start is called before the first frame update
     private void Awake()
     {
@@ -41,15 +47,12 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-
             rigidbody.velocity = new Vector2(5.0f, rigidbody.velocity.y);
 
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-
-
             rigidbody.velocity = new Vector2(-5.0f, rigidbody.velocity.y);
 
             transform.eulerAngles = new Vector3(0, 180, 0);
@@ -57,8 +60,6 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && m_ground)
         {
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, 14.0f);
-     
-            
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -124,7 +125,41 @@ public class Player : MonoBehaviour
     }
     public void Damage(int dmg)
     {
+        if (m_isInvincible) return;
+
         hp -= dmg;
+
+        if (hp <= 0)
+        {
+            hp = 0;
+            return;
+        }
+
+        StartCoroutine(BecomeTemporarilyInvincible());
     }
     public static int BulletLoad { get => BulletLoad; set => BulletLoad = value; }
+
+    private IEnumerator BecomeTemporarilyInvincible()
+    {
+        m_isInvincible = true;
+
+        for (float i = 0; i < invincibilityDurationSeconds; i += invincibilityDeltaTime)
+        {
+            if (model.transform.localScale == m_scaleVec)
+            {
+                ScaleModelTo(Vector3.zero);
+            }
+            else
+            {
+                ScaleModelTo(m_scaleVec);
+            }
+            yield return new WaitForSeconds(invincibilityDeltaTime);
+        }
+        ScaleModelTo(m_scaleVec);
+        m_isInvincible = false;
+    }
+    private void ScaleModelTo(Vector3 scale)
+    {
+        model.transform.localScale = scale;
+    }
 }
