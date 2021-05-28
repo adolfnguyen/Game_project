@@ -24,7 +24,7 @@ public class RobotShooting : MonoBehaviour
     Coroutine shot;
     private void ClickProcess()
     {
-        Bullet = Player.bulletLoad;
+        Bullet = CoreGame.Bullet;
         if (Input.GetKeyDown(KeyCode.X))
         {
             Debug.Log("check 3");           
@@ -60,7 +60,7 @@ public class RobotShooting : MonoBehaviour
         Instantiate(bullet, firePoint.position, firePoint.rotation);
         Debug.Log("case 2");
         anim.SetBool("Shooting", true);
-        Player.DecreaseBullet();
+        CoreGame.DecreaseBullet();
         EventManager.TriggerEvent(GameEvents.UPDATEBULLET);
         yield return new WaitForSeconds(0.3f);
         anim.SetBool("Shooting", false);

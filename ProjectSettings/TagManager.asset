@@ -8,6 +8,8 @@ TagManager:
   - GameOut
   - Bullet
   - Enemy
+  - Trigger
+  - BulletDrop
   layers:
   - Default
   - TransparentFX

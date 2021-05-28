@@ -31,6 +31,10 @@ public class EnemyAttack : Enemies
     // Update is called once per frame
     void Update()
     {
+        if (hp <= 0)
+        {
+            Destroy(transform.gameObject);
+        }
         if (CheckFollowRadius(playerTransform.position.x, transform.position.x))
         {
             if (playerTransform.position.x < transform.position.x)
@@ -71,14 +75,7 @@ public class EnemyAttack : Enemies
             enemyAnim.SetBool("WalkAnim", false);
             enemyAnim.SetBool("AttackAnim", false);
             trigger.enabled = false;
-        }
-        
-            if (hp <= 0)
-            {
-                Destroy(transform.gameObject);
-            }
-        
-        
+        }                                
     }
     public void Damage(int dmg)
     {
