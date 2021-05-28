@@ -13,14 +13,14 @@ public class Player : MonoBehaviour
     public Animator aim;
    
     public Collider2D secondCollider;
-    public int ourHeal;
+   
     // Start is called before the first frame update
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         aim = gameObject.GetComponent<Animator>();
         secondCollider.enabled = false;
-        ourHeal = CoreGame.Heal;
+        CoreGame.CurHeal = CoreGame.Heal;
     }
     void Start()
     {
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 
         aim.SetFloat("force", Mathf.Abs(rigidbody.velocity.x));
         ClickProcess();
-        if (ourHeal <= 0)
+        if (CoreGame.CurHeal <= 0)
         {
             Death();
         }
@@ -125,7 +125,9 @@ public class Player : MonoBehaviour
   
     public void Damage(int dmg)
     {
-        ourHeal -= dmg;
+        CoreGame.CurHeal -= dmg;
+        EventManager.TriggerEvent(GameEvents.UPDATEHEAL);
+        Debug.Log("nhập sát thương");
     }
     public void Death()
     {        

@@ -10,13 +10,17 @@ public class UIManager : MonoBehaviour
     private bool pause = false;
     public GameObject gameOverPanel;
     public Text Bullet;
+    public Slider Heal;
     // Start is called before the first frame update
     void Start()
     {
         pausePanel.SetActive(false);
         Bullet.text = "20";
+        Heal.maxValue = CoreGame.Heal;
+        Heal.value = CoreGame.CurHeal;
         EventManager.StartListening(GameEvents.UPDATEBULLET, new UnityAction(UpdateBullet));
         EventManager.StartListening(GameEvents.GAMEOVER, new UnityAction(GameOver));
+        EventManager.StartListening(GameEvents.UPDATEHEAL, new UnityAction(UpdateHeal));
     }
 
     // Update is called once per frame
@@ -36,6 +40,10 @@ public class UIManager : MonoBehaviour
             pausePanel.SetActive(false);
             Time.timeScale = 1f;
         }
+    }
+    void UpdateHeal()
+    {
+        Heal.value = CoreGame.CurHeal;
     }
     public void UpdateBullet()
     {
