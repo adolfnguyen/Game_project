@@ -6,9 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed;
     public int dmg = 75;
-    public Vector3 xPosition;
     Rigidbody2D bl;
-    public float forward;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,11 +26,11 @@ public class Bullet : MonoBehaviour
         {
             enemy.Damage(dmg);
         }*/
-        if (hitintro.isTrigger != true && hitintro.CompareTag("Enemy"))
+        if (hitintro.isTrigger != true && hitintro.CompareTag("Player"))
         {
             hitintro.SendMessageUpwards("Damage", dmg);
+            Destroy(transform.gameObject);
         }
-        //Destroy(transform.gameObject);
         if (hitintro.isTrigger != true && hitintro.CompareTag("Ground"))
         {
             Destroy(transform.gameObject);

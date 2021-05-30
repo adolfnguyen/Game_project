@@ -27,9 +27,9 @@ public class RobotShooting : MonoBehaviour
         Bullet = CoreGame.Bullet;
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Debug.Log("check 3");           
+            Debug.Log("check 3");
             if (Bullet > 0)
-            {              
+            {
                 Debug.Log("case1");
                 shot = StartCoroutine(Shoot());         
             }
@@ -38,7 +38,8 @@ public class RobotShooting : MonoBehaviour
                 Debug.Log("het dan");
             }
         }
-        else if(Input.GetKeyUp(KeyCode.X)) {
+        else if(Input.GetKeyUp(KeyCode.X)) 
+        {
             anim.SetBool("Shooting", false);
             Debug.Log("check here");
             if (shot != null) StopCoroutine(shot);
@@ -56,7 +57,6 @@ public class RobotShooting : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        
         Instantiate(bullet, firePoint.position, firePoint.rotation);
         Debug.Log("case 2");
         anim.SetBool("Shooting", true);

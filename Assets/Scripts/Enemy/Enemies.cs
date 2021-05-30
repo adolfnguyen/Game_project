@@ -7,10 +7,9 @@ public class Enemies : MonoBehaviour
     int m_moveSpeed;
     int m_attackDamage;
     int m_hitPoint;
+    float m_attackDelay;
     float m_attackRadius;
     float m_followRadius;
-
-    public int hp = 100;
     
     public void SetMoveSpeed(int speed)
     {
@@ -40,6 +39,16 @@ public class Enemies : MonoBehaviour
     public int GetHitPoint()
     {
         return m_hitPoint;
+    }
+
+    public void SetAttackDelay(float aD)
+    {
+        m_attackDelay = aD;
+    }
+
+    public float GetAttackDelay()
+    {
+        return m_attackDelay;
     }
 
     public void SetFollowRadius(float frad)
