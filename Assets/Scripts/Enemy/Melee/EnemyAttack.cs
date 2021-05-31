@@ -39,7 +39,7 @@ public class EnemyAttack : Enemies
         {
             if (playerTransform.position.x < transform.position.x)
             {
-                if (CheckAttackRadius(playerTransform.position.x, transform.position.x))
+                if (CheckAttackRadius(playerTransform, transform))
                 {
                     enemyAnim.SetBool("AttackAnim", true);
                     trigger.enabled = true;
@@ -55,7 +55,7 @@ public class EnemyAttack : Enemies
             }
             else if (playerTransform.position.x > transform.position.x)
             {
-                if (CheckAttackRadius(playerTransform.position.x, transform.position.x))
+                if (CheckAttackRadius(playerTransform, transform))
                 {
                     enemyAnim.SetBool("AttackAnim", true);
                     trigger.enabled = true;

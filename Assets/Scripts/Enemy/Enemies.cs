@@ -70,9 +70,10 @@ public class Enemies : MonoBehaviour
         else return false;
     }
 
-    public bool CheckAttackRadius(float playerPosition, float enemyPosition)
+    public bool CheckAttackRadius(Transform playerTransform, Transform enemyTransform)
     {
-        if (Mathf.Abs(playerPosition - enemyPosition) < m_attackRadius)
+        if (Mathf.Abs(playerTransform.position.x - enemyTransform.position.x) < m_attackRadius &&
+            Mathf.Abs(playerTransform.position.y - enemyTransform.position.y) < 2)
         {
             return true;
         }

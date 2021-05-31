@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 6470036314357977905}
   - component: {fileID: 710416448}
   m_Layer: 0
-  m_Name: 4
-  m_TagString: Untagged
+  m_Name: Enemy_Projectile
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.8439096, y: -0.005849004}

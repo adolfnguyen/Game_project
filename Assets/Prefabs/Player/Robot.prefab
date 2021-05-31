@@ -346,6 +346,7 @@ MonoBehaviour:
   m_ground: 0
   aim: {fileID: 0}
   secondCollider: {fileID: 2086124569}
+  bendown: 0
   invincibilityDurationSeconds: 1.5
   invincibilityDeltaTime: 0.15
   model: {fileID: 5207967441306602790}
@@ -363,9 +364,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grenade: {fileID: 4767080185864779914, guid: cefbc19fd6dc8dd449fa70579ff9a3d1, type: 3}
   firePoint: {fileID: 1082089376}
-  launch: 10
-  distance: 50
+  launch: 2.5
+  distance: 20
   speed: 1.5
+  ngrenade: 0
 --- !u!114 &16115829
 MonoBehaviour:
   m_ObjectHideFlags: 0

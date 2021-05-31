@@ -9,19 +9,22 @@ public class Shooter_1 : Enemies
     public int hitPoint;
     public float attackRadius;
     [SerializeField] Animator enemyAnim;
+    [SerializeField] Transform playerTransform;
     SpriteRenderer m_enemySR;
 
     public float attackDelay;
-    private RaycastHit2D m_vision;
-    private Transform m_firePoint;
+    //private RaycastHit2D m_vision;
+    [SerializeField] Transform m_firePoint;
+    private bool m_canShoot;
     public GameObject projectile;
-    private int m_walkState;
+    private int m_walkState = 0;
 
     [SerializeField] private Transform[] waypoints;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerTransform = FindObjectOfType<Player>().GetComponent<Transform>();
         enemyAnim = gameObject.GetComponent<Animator>();
         m_enemySR = GetComponent<SpriteRenderer>();
         SetMoveSpeed(moveSpeed);
@@ -29,6 +32,7 @@ public class Shooter_1 : Enemies
         SetHitPoint(hitPoint);
         SetAttackRadius(attackRadius);
         SetAttackDelay(attackDelay);
+        m_canShoot = true;
     }
 
     // Update is called once per frame
@@ -39,17 +43,23 @@ public class Shooter_1 : Enemies
             enemyAnim.SetBool("DeathAnim", true);
             //Destroy(transform.gameObject);
         }
-        Debug.DrawLine(transform.position, transform. * attackRadius, Color.red, 5.0f);
-        m_vision = Physics2D.Raycast(transform.position, transform.forward, attackRadius);
-        if (m_vision.collider.CompareTag("Player"))
+        //Vector2 abc = new Vector2(transform.position.x - attackRadius, transform.position.y);
+        //Debug.DrawLine(transform.position, abc, Color.red, 0.1f);
+        //RaycastHit2D m_vision = Physics2D.Raycast(transform.position, transform.forward, attackRadius);
+        if (CheckAttackRadius(playerTransform, transform) && m_canShoot)
         {
-            //if (m_vision.collider.tag == "Player")
-            //{
-                Debug.Log(m_vision.collider.name);
-                Shooting();
-            //}
+            if (playerTransform.position.x < transform.position.x)
+            {
+                StartCoroutine(EnemyShoot_L());
+                m_canShoot = false;
+            }
+            else
+            {
+                StartCoroutine(EnemyShoot_R());
+                m_canShoot = false;
+            }
         }
-        else
+        else if (m_canShoot == true)
         {
             if (transform.position.x >= waypoints[1].position.x)
             {
@@ -60,88 +70,53 @@ public class Shooter_1 : Enemies
                 m_walkState = 0;
             }
 
-            if (m_walkState == 1)
+            if (m_walkState == 2)
                 MoveRight();
-            else if (m_walkState == 2)
+            else if (m_walkState == 1)
                 MoveLeft();
             else if (m_walkState == 0)
                 StartCoroutine(Wait3s());
+
         }
-
-
-        //if (playerTransform.position.x < transform.position.x)
-        //{
-        //    if (CheckAttackRadius(playerTransform.position.x, transform.position.x))
-        //    {
-        //        enemyAnim.SetBool("AttackAnim", true);
-        //        trigger.enabled = true;
-        //    }
-        //    else
-        //    {
-        //        transform.position += new Vector3(-GetMoveSpeed() * Time.deltaTime, 0f, 0f);
-        //        enemyAnim.SetBool("AttackAnim", false);
-        //        enemyAnim.SetBool("WalkAnim", true);
-        //        transform.eulerAngles = new Vector3(0, 180, 0);
-        //        trigger.enabled = false;
-        //    }
-        //}
-        //else if (playerTransform.position.x > transform.position.x)
-        //{
-        //    if (CheckAttackRadius(playerTransform.position.x, transform.position.x))
-        //    {
-        //        enemyAnim.SetBool("AttackAnim", true);
-        //        trigger.enabled = true;
-        //    }
-        //    else
-        //    {
-        //        transform.position += new Vector3(GetMoveSpeed() * Time.deltaTime, 0f, 0f);
-        //        enemyAnim.SetBool("AttackAnim", false);
-        //        enemyAnim.SetBool("WalkAnim", true);
-        //        transform.eulerAngles = new Vector3(0, 0, 0);
-        //        trigger.enabled = false;
-        //    }
-        //}
-        //else
-        //{
-        //    enemyAnim.SetBool("WalkAnim", false);
-        //    enemyAnim.SetBool("AttackAnim", false);
-        //    trigger.enabled = false;
-        //}
     }
     public void Damage(int dmg)
     {
         hitPoint -= dmg;
     }
 
-    Coroutine EnemyShot;
-
-    private void Shooting()
+    IEnumerator EnemyShoot_L()
     {
-        EnemyShot = StartCoroutine(EnemyShoot());
-        if (EnemyShot != null) StopCoroutine(EnemyShot);
-    }
-
-    IEnumerator EnemyShoot()
-    {
+        transform.eulerAngles = new Vector3(0, 180, 0);
         Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
         enemyAnim.SetBool("AttackAnim", true);
         yield return new WaitForSeconds(attackDelay);
         enemyAnim.SetBool("AttackAnim", false);
+        m_canShoot = true;
     }
 
-    void MoveRight()
+    IEnumerator EnemyShoot_R()
+    {
+        transform.eulerAngles = new Vector3(0, 0, 0);
+        Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
+        enemyAnim.SetBool("AttackAnim", true);
+        yield return new WaitForSeconds(attackDelay);
+        enemyAnim.SetBool("AttackAnim", false);
+        m_canShoot = true;
+    }
+
+    void MoveLeft()
     {
         m_walkState = 1;
-        transform.position = Vector2.MoveTowards(transform.position, waypoints[1].transform.position,
+        transform.position = Vector2.MoveTowards(transform.position, waypoints[0].transform.position,
                 moveSpeed * Time.deltaTime);
         transform.eulerAngles = new Vector3(0, 180, 0);
         enemyAnim.SetBool("WalkAnim", true);
     }
 
-    void MoveLeft()
+    void MoveRight()
     {
         m_walkState = 2;
-        transform.position = Vector2.MoveTowards(transform.position, waypoints[0].transform.position,
+        transform.position = Vector2.MoveTowards(transform.position, waypoints[1].transform.position,
                 moveSpeed * Time.deltaTime);
         transform.eulerAngles = new Vector3(0, 0, 0);
         enemyAnim.SetBool("WalkAnim", true);
@@ -150,18 +125,19 @@ public class Shooter_1 : Enemies
     private IEnumerator Wait3s()
     {
         m_walkState = 0;
-        Debug.Log(m_walkState);
         enemyAnim.SetBool("WalkAnim", false);
         yield return new WaitForSeconds(3.0f);
         if (transform.position.x >= waypoints[1].position.x)
         {
-            m_walkState = 2;
+            m_walkState = 1;
+            attackRadius *= -1;
             transform.position = Vector2.MoveTowards(transform.position, waypoints[0].transform.position,
                 moveSpeed * Time.deltaTime);
         }
         else if (transform.position.x <= waypoints[0].position.x)
         {
-            m_walkState = 1;
+            m_walkState = 2;
+            attackRadius *= -1;
             transform.position = Vector2.MoveTowards(transform.position, waypoints[1].transform.position,
                 moveSpeed * Time.deltaTime);
         }
