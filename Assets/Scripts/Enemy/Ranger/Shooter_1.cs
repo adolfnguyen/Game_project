@@ -40,8 +40,7 @@ public class Shooter_1 : Enemies
     {
         if (hitPoint <= 0)
         {
-            enemyAnim.SetBool("DeathAnim", true);
-            //Destroy(transform.gameObject);
+            StartCoroutine(Death());
         }
         //Vector2 abc = new Vector2(transform.position.x - attackRadius, transform.position.y);
         //Debug.DrawLine(transform.position, abc, Color.red, 0.1f);
@@ -103,7 +102,13 @@ public class Shooter_1 : Enemies
         enemyAnim.SetBool("AttackAnim", false);
         m_canShoot = true;
     }
+    IEnumerator Death()
+    {
+        enemyAnim.SetBool("DeathAnim", true);
+        yield return new WaitForSeconds(1);
+        Destroy(transform.gameObject);
 
+    }
     void MoveLeft()
     {
         m_walkState = 1;

@@ -21,13 +21,18 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D hitintro)
     {
-        if (hitintro.CompareTag("Player"))
+        if (hitintro.CompareTag("Enemy"))
         {
             hitintro.SendMessageUpwards("Damage", dmg);
             Destroy(transform.gameObject);
         }
         if (hitintro.CompareTag("Ground"))
         {
+            Destroy(transform.gameObject);
+        }
+        if (hitintro.CompareTag("Player"))
+        {
+            hitintro.SendMessageUpwards("Damage", dmg);
             Destroy(transform.gameObject);
         }
     }
