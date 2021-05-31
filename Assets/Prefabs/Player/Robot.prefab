@@ -349,8 +349,11 @@ MonoBehaviour:
   aim: {fileID: 0}
   secondCollider: {fileID: 2086124569}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   ourHeal: 0
 =======
+=======
+>>>>>>> Stashed changes
   bendown: 0
   invincibilityDurationSeconds: 1.5
   invincibilityDeltaTime: 0.15
