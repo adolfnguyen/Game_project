@@ -83,7 +83,9 @@ MonoBehaviour:
   hitPoint: 200
   attackRadius: 10
   enemyAnim: {fileID: 0}
+  playerTransform: {fileID: 5207967441306602811, guid: eaac258798e0f024c9a960d32925eca9, type: 3}
   attackDelay: 0.4
+  m_firePoint: {fileID: 600027784}
   projectile: {fileID: 6304962397769326034, guid: fbba78abf2a258a4ba71378c54831ce4, type: 3}
   waypoints:
   - {fileID: 0}
