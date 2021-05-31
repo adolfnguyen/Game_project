@@ -1,9 +1,1 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"m_AlwaysRefresh":false,"showFog":true,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true,"showVisualEffectGraphs":true,"m_FxEnabled":true},"in2DMode":true,"pivot":{"x":-4.600580215454102,"y":2.6973190307617189,"z":97.70072937011719},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":3.279597043991089,"orthographic":true}
-=======
-﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"m_AlwaysRefresh":false,"showFog":true,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true,"showVisualEffectGraphs":true,"m_FxEnabled":true},"in2DMode":true,"pivot":{"x":-1.13274085521698,"y":-2.8117482662200929,"z":106.38154602050781},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":3.613703489303589,"orthographic":true}
->>>>>>> Stashed changes
-=======
-﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"m_AlwaysRefresh":false,"showFog":true,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true,"showVisualEffectGraphs":true,"m_FxEnabled":true},"in2DMode":true,"pivot":{"x":-1.13274085521698,"y":-2.8117482662200929,"z":106.38154602050781},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":3.613703489303589,"orthographic":true}
->>>>>>> Stashed changes
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"m_AlwaysRefresh":false,"showFog":true,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true,"showVisualEffectGraphs":true,"m_FxEnabled":true},"in2DMode":true,"pivot":{"x":0.46812713146209719,"y":-0.09182371199131012,"z":-8.938151359558106},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":5.553637504577637,"orthographic":true}
