@@ -158,5 +158,4 @@ public class Player : MonoBehaviour
         aim.SetBool("Death", true);
         EventManager.TriggerEvent(GameEvents.GAMEOVER);
     }
-    
 }
