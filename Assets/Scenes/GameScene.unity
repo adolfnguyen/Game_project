@@ -2037,11 +2037,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959640944}
   m_CullTransparentMesh: 1
---- !u!4 &1967926937 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 600027784, guid: 15db00d4e291e1848ad857363fe27e1f, type: 3}
-  m_PrefabInstance: {fileID: 2096036033}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2066959029
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,22 +2125,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 600027784, guid: 15db00d4e291e1848ad857363fe27e1f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 5943767866771981978, guid: 15db00d4e291e1848ad857363fe27e1f, type: 3}
-      propertyPath: attackDelay
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5943767866771981978, guid: 15db00d4e291e1848ad857363fe27e1f, type: 3}
-      propertyPath: m_firePoint
-      value: 
-      objectReference: {fileID: 1967926937}
-    - target: {fileID: 5943767866771981978, guid: 15db00d4e291e1848ad857363fe27e1f, type: 3}
-      propertyPath: attackRadius
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5943767866771981978, guid: 15db00d4e291e1848ad857363fe27e1f, type: 3}
       propertyPath: playerTransform
       value: 
@@ -2202,17 +2181,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6087279405499553925, guid: 15db00d4e291e1848ad857363fe27e1f, type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6087279405499553928, guid: 15db00d4e291e1848ad857363fe27e1f, type: 3}
       propertyPath: m_Name
       value: Shooter_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6087279405499553930, guid: 15db00d4e291e1848ad857363fe27e1f, type: 3}
-      propertyPath: m_Constraints
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15db00d4e291e1848ad857363fe27e1f, type: 3}

@@ -18,6 +18,7 @@ public class Shooter_1 : Enemies
     private bool m_canShoot;
     public GameObject projectile;
     private int m_walkState = 0;
+    private bool m_isDeath = false;
 
     [SerializeField] private Transform[] waypoints;
 
@@ -40,43 +41,44 @@ public class Shooter_1 : Enemies
     {
         if (hitPoint <= 0)
         {
-            StartCoroutine(Death());
+            if (m_isDeath == false)
+                StartCoroutine(Death());
         }
-        //Vector2 abc = new Vector2(transform.position.x - attackRadius, transform.position.y);
-        //Debug.DrawLine(transform.position, abc, Color.red, 0.1f);
-        //RaycastHit2D m_vision = Physics2D.Raycast(transform.position, transform.forward, attackRadius);
-        if (CheckAttackRadius(playerTransform, transform) && m_canShoot)
+        else
         {
-            if (playerTransform.position.x < transform.position.x)
+            if (CheckAttackRadius(playerTransform, transform) && m_canShoot)
             {
-                StartCoroutine(EnemyShoot_L());
-                m_canShoot = false;
+                if (playerTransform.position.x < transform.position.x)
+                {
+                    StartCoroutine(EnemyShoot_L());
+                    m_canShoot = false;
+                }
+                else
+                {
+                    StartCoroutine(EnemyShoot_R());
+                    m_canShoot = false;
+                }
             }
-            else
+            else if (m_canShoot == true)
             {
-                StartCoroutine(EnemyShoot_R());
-                m_canShoot = false;
-            }
-        }
-        else if (m_canShoot == true)
-        {
-            if (transform.position.x >= waypoints[1].position.x)
-            {
-                m_walkState = 0;
-            }
-            if (transform.position.x <= waypoints[0].position.x)
-            {
-                m_walkState = 0;
-            }
+                if (transform.position.x >= waypoints[1].position.x)
+                {
+                    m_walkState = 0;
+                }
+                if (transform.position.x <= waypoints[0].position.x)
+                {
+                    m_walkState = 0;
+                }
 
-            if (m_walkState == 2)
-                MoveRight();
-            else if (m_walkState == 1)
-                MoveLeft();
-            else if (m_walkState == 0)
-                StartCoroutine(Wait3s());
+                if (m_walkState == 2)
+                    MoveRight();
+                else if (m_walkState == 1)
+                    MoveLeft();
+                else if (m_walkState == 0)
+                    StartCoroutine(Wait3s());
 
-        }
+            }
+        }   
     }
     public void Damage(int dmg)
     {
@@ -95,6 +97,8 @@ public class Shooter_1 : Enemies
 
     IEnumerator EnemyShoot_R()
     {
+        enemyAnim.SetBool("WalkAnim", false);
+        yield return new WaitForSeconds(attackDelay);
         transform.eulerAngles = new Vector3(0, 0, 0);
         Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
         enemyAnim.SetBool("AttackAnim", true);
@@ -104,8 +108,11 @@ public class Shooter_1 : Enemies
     }
     IEnumerator Death()
     {
+        m_isDeath = true;
+        enemyAnim.SetBool("AttackAnim", false);
+        enemyAnim.SetBool("WalkAnim", false);
         enemyAnim.SetBool("DeathAnim", true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.85f);
         Destroy(transform.gameObject);
 
     }
