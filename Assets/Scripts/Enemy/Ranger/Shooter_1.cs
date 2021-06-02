@@ -87,6 +87,8 @@ public class Shooter_1 : Enemies
 
     IEnumerator EnemyShoot_L()
     {
+        enemyAnim.SetBool("WalkAnim", false);
+        yield return new WaitForSeconds(attackDelay);
         transform.eulerAngles = new Vector3(0, 180, 0);
         Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
         enemyAnim.SetBool("AttackAnim", true);

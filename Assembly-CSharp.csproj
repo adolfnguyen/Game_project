@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Enemy\Ranger\Shooter_1.cs" />
     <Compile Include="Assets\Scripts\GrenadeTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerStatus.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Tanker\Tanker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
