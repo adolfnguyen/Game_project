@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyAttack : Enemies
 {
+  
     public int moveSpeed;
     public int attackDamage;
     public int hitPoint;
@@ -13,7 +14,7 @@ public class EnemyAttack : Enemies
     [SerializeField] Transform playerTransform;
     [SerializeField] Animator enemyAnim;
     SpriteRenderer m_enemySR;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,11 +27,13 @@ public class EnemyAttack : Enemies
         SetHitPoint(hitPoint);
         SetAttackRadius(attackRadius);
         SetFollowRadius(followRadius);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        Physics2D.IgnoreLayerCollision(6, 7, true);
         if (hitPoint <= 0)
         {
             Destroy(transform.gameObject);

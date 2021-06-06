@@ -76,9 +76,11 @@
     <Compile Include="Assets\Scripts\Enemy\Melee\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Engine\UIManager.cs" />
     <Compile Include="Assets\Scripts\BulletDrop.cs" />
+    <Compile Include="Assets\Scripts\Engine\Camerafollow.cs" />
     <Compile Include="Assets\Scripts\Enemy\Ranger\Shooter_1.cs" />
     <Compile Include="Assets\Scripts\GrenadeTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerStatus.cs" />
+    <Compile Include="Assets\Scripts\HealDrop.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
