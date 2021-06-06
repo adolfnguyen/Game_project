@@ -66,20 +66,27 @@
     <Compile Include="Assets\Scripts\Enemy\Drones.cs" />
     <Compile Include="Assets\Scripts\Player\AttackTrigger.cs" />
     <Compile Include="Assets\death.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Ranger\Shooter_NoMove.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\Engine\SingletonMonobehaviour.cs" />
     <Compile Include="Assets\Scripts\Engine\EventManager.cs" />
     <Compile Include="Assets\Scripts\RobotShooting.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnenmyAttackTrigger.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Melee\RunAround.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Ranger\Shooter_Shoot_Toward_Player.cs" />
     <Compile Include="Assets\Scripts\Engine\GameEvents.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Enemy\Melee\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Engine\UIManager.cs" />
     <Compile Include="Assets\Scripts\BulletDrop.cs" />
     <Compile Include="Assets\Scripts\Enemy\Ranger\Shooter_1.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Tanker\Tanker.cs" />
     <Compile Include="Assets\Scripts\GrenadeTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerStatus.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Tanker\Tanker.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Ranger\Bullet_2.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Mine\Mine.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Mine\Fish.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Ranger\Shooter_Follow.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

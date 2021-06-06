@@ -159,10 +159,10 @@ MonoBehaviour:
   moveSpeed: 0
   attackDamage: 50
   hitPoint: 1000
-  attackRadius: 5
+  attackRadius: 4
   enemyAnim: {fileID: 0}
   playerTransform: {fileID: 0}
-  trigger: {fileID: 0}
+  trigger: {fileID: 484299802}
 --- !u!50 &4290353025958981465
 Rigidbody2D:
   serializedVersion: 4

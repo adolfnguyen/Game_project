@@ -79,5 +79,12 @@ public class Enemies : MonoBehaviour
         }
         else return false;
     }
-    
+    public bool CheckAttackRadiusX(Transform playerTransform, Transform enemyTransform)
+    {
+        if (Mathf.Abs(playerTransform.position.x - enemyTransform.position.x) < m_attackRadius)
+        {
+            return true;
+        }
+        else return false;
+    }
 }

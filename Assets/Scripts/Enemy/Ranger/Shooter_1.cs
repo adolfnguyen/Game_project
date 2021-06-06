@@ -8,15 +8,14 @@ public class Shooter_1 : Enemies
     public int attackDamage;
     public int hitPoint;
     public float attackRadius;
+    public GameObject projectile;
     [SerializeField] Animator enemyAnim;
     [SerializeField] Transform playerTransform;
     SpriteRenderer m_enemySR;
 
     public float attackDelay;
-    //private RaycastHit2D m_vision;
     [SerializeField] Transform m_firePoint;
     private bool m_canShoot;
-    public GameObject projectile;
     private int m_walkState = 0;
     private bool m_isDeath = false;
 
@@ -116,7 +115,6 @@ public class Shooter_1 : Enemies
         enemyAnim.SetBool("DeathAnim", true);
         yield return new WaitForSeconds(0.85f);
         Destroy(transform.gameObject);
-
     }
     void MoveLeft()
     {
