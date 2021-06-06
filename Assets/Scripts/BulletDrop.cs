@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BulletDrop : MonoBehaviour
 {
+
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -13,6 +15,7 @@ public class BulletDrop : MonoBehaviour
             EventManager.TriggerEvent(GameEvents.UPDATEBULLET);
             
         }
+       
     }
 
 
