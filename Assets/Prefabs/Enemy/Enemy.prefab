@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8181171244358856581}
   - component: {fileID: 8109654627146009922}
   - component: {fileID: 1814640257379485651}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: AttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 4887794515492085574}
   - component: {fileID: 4887794515492085575}
   - component: {fileID: 9116497994218103353}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -119,11 +119,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27df442b4b9bbd4cabef9147c3d66f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 7
   attackDamage: 20
   hitPoint: 100
   attackRadius: 1.2
-  followRadius: 8
+  followRadius: 20
   trigger: {fileID: 8109654627146009922}
   playerTransform: {fileID: 5207967441306602811, guid: eaac258798e0f024c9a960d32925eca9, type: 3}
   enemyAnim: {fileID: 9116497994218103353}
@@ -166,7 +166,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 70e365a0fdee7ec47b3ee40870988f81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

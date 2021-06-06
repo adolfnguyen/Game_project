@@ -17,13 +17,14 @@ public class Player : MonoBehaviour
     private bool m_isInvincible = false;
     [SerializeField] private float invincibilityDurationSeconds;
     [SerializeField] private float invincibilityDeltaTime;
-    [SerializeField] private GameObject model;
+    private SpriteRenderer m_spriteRenderer;
     private Vector3 m_scaleVec = new Vector3(0.38f, 0.3f, 1f);
     // Start is called before the first frame update
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         aim = gameObject.GetComponent<Animator>();
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
         secondCollider.enabled = false;
         CoreGame.CurHeal = CoreGame.Heal;
     }
@@ -139,22 +140,18 @@ public class Player : MonoBehaviour
 
         for (float i = 0; i < invincibilityDurationSeconds; i += invincibilityDeltaTime)
         {
-            if (model.transform.localScale == m_scaleVec)
+            if (m_spriteRenderer.maskInteraction == SpriteMaskInteraction.None)
             {
-                ScaleModelTo(Vector3.zero);
+                m_spriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
             }
             else
             {
-                ScaleModelTo(m_scaleVec);
+                m_spriteRenderer.maskInteraction = SpriteMaskInteraction.None;
             }
             yield return new WaitForSeconds(invincibilityDeltaTime);
         }
-        ScaleModelTo(m_scaleVec);
+        m_spriteRenderer.maskInteraction = SpriteMaskInteraction.None;
         m_isInvincible = false;
-    }
-    private void ScaleModelTo(Vector3 scale)
-    {
-        model.transform.localScale = scale;
     }
     public void Death()
     {        
