@@ -48,7 +48,13 @@ public class CoreGame : MonoBehaviour
             bullet++;
         }
     }
-
+    public static void IncreaseHeal()
+    {
+        if (curheal < heal)
+        {
+            curheal = curheal + 100;
+        }
+    }
     /*public static bool IsGameOver()
         {
             if (state == 1)

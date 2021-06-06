@@ -108,7 +108,10 @@ public class Player : MonoBehaviour
             m_ground = false;
 
         }
-    
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            CoreGame.CurHeal -= 50;
+        }
     }
     /*public void Damage(int dmg)
     {
