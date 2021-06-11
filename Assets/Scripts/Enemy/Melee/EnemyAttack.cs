@@ -33,7 +33,6 @@ public class EnemyAttack : Enemies
     // Update is called once per frame
     void Update()
     {
-        Physics2D.IgnoreLayerCollision(6, 7, true);
         if (hitPoint <= 0)
         {
             Destroy(transform.gameObject);
