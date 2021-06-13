@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &600027783
+--- !u!1 &69901380
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,28 +8,69 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 600027784}
-  m_Layer: 0
-  m_Name: FirePoint
+  - component: {fileID: 69901381}
+  - component: {fileID: 69901383}
+  - component: {fileID: 69901382}
+  m_Layer: 10
+  m_Name: AttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &600027784
+--- !u!4 &69901381
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 600027783}
+  m_GameObject: {fileID: 69901380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: -0.61, z: 0}
+  m_LocalPosition: {x: 0.99, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6087279405499553924}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &69901383
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69901380}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 2.2507408, y: -1.327739}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.1333313, y: 1.1252213}
+  m_EdgeRadius: 0
+--- !u!114 &69901382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69901380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a417c395682acfa43bf9dba03a4a34ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmg: 75
 --- !u!1 &6087279405499553928
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,8 +85,8 @@ GameObject:
   - component: {fileID: 6087279405499553930}
   - component: {fileID: 6087279405499553931}
   - component: {fileID: 307763934}
-  m_Layer: 0
-  m_Name: Shooter_1 2
+  m_Layer: 10
+  m_Name: Melee_WalkAround
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,9 +101,9 @@ Transform:
   m_GameObject: {fileID: 6087279405499553928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.58, y: -1.2856646, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
-  - {fileID: 600027784}
+  - {fileID: 69901381}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -78,15 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8a4cb7d62442b41acdff23b17ede84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  attackDamage: 0
-  hitPoint: 0
-  attackRadius: 0
+  moveSpeed: 8
+  attackDamage: 50
+  hitPoint: 300
+  attackRadius: 1.2
+  attackHeightRadius: 2
   enemyAnim: {fileID: 0}
   playerTransform: {fileID: 0}
-  attackDelay: 0
-  projectile: {fileID: 0}
-  waypoints: []
+  attackDelay: 0.5
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!212 &6087279405499553925
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127,9 +170,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 720cbfb21e0300f4e92a734ca40388c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6586dd1d9544dda45bff84be01fb7247, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 6.42, y: 5}
@@ -172,18 +215,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.29820108, y: -0.62663126}
+  m_Offset: {x: -0.34821266, y: 0.54404926}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.42, y: 5}
+    oldSize: {x: 11.69, y: 12.94}
     newSize: {x: 6.42, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9313431, y: 2.1461844}
+  m_Size: {x: 3.965963, y: 11.476452}
   m_EdgeRadius: 0
 --- !u!95 &307763934
 Animator:
@@ -195,7 +238,7 @@ Animator:
   m_GameObject: {fileID: 6087279405499553928}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6b57cb8becfe52848aa9abcce4b23ce8, type: 2}
+  m_Controller: {fileID: 9100000, guid: d6510fa817419a542abd0634dd94419b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
