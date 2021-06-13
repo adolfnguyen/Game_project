@@ -7,13 +7,13 @@ public class Bullet : MonoBehaviour
     public float speed;
     public int dmg;
     Rigidbody2D bl;
-    Animator aim;
+    //Animator aim;
     public bool touching;   
     // Start is called before the first frame update
     void Start()
     {
         bl = GetComponent<Rigidbody2D>();
-        aim = gameObject.GetComponent<Animator>();
+        //aim = gameObject.GetComponent<Animator>();
        
     }
 
@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
     {
         bl.velocity = transform.right * speed;
         Destroy(transform.gameObject, 1.5f);
-        aim.SetBool("Touching", touching);
+       // aim.SetBool("Touching", touching);
     }
     private void OnTriggerEnter2D(Collider2D hitintro)
     {

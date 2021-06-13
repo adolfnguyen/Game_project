@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public GameObject pausePanel;
-    private bool pause = false;
+   
     public GameObject gameOverPanel;
     public Text Bullet;
     public Text Greande;
@@ -28,16 +28,12 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            pause = !pause;
-        }
-        if (pause)
+        if (CoreGame.Pause)
         {
             pausePanel.SetActive(true);
             Time.timeScale = 0f;
         }
-        if (pause == false)
+        if (CoreGame.Pause == false)
         {
             pausePanel.SetActive(false);
             Time.timeScale = 1f;
@@ -55,22 +51,14 @@ public class UIManager : MonoBehaviour
     {
         Greande.text = "X " + CoreGame.Grenade;
     }
-    public void Restart()
-    {
-        pause = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        CoreGame.ResetStatus();
-    }
+   
     public void GameOver()
     {
         if (gameOverPanel)
         {
             gameOverPanel.SetActive(true);
-            pause = false;
+            CoreGame.Pause = false;
         }
     }
-        public void Resume()
-    {
-        pause = false;
-    }
+   
 }

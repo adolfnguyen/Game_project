@@ -9,6 +9,7 @@ public class CoreGame : MonoBehaviour
     private static int bullet = 20;
     private static int curheal = 1000;
     private static int grenade = 3;
+    private static bool pause;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,14 @@ public class CoreGame : MonoBehaviour
     void Update()
     {
         
+    }
+    public static bool GameOver()
+    {
+        if (state == 1f)
+        {
+            return true;
+        }
+        return false;
     }
     public static void ResetStatus()
     {
@@ -69,4 +78,5 @@ public class CoreGame : MonoBehaviour
     public static int CurHeal { get => curheal; set => curheal = value; }
     public static int Bullet { get => bullet; set => bullet = value; }
     public static int Grenade { get => grenade; set => grenade = value; }
+    public static bool Pause { get => pause; set => pause = value; }
 }
