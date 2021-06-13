@@ -9,6 +9,7 @@ public class Shooter_Follow : Enemies
     public int hitPoint;
     public float attackRadius;
     public float followRadius;
+    public float attackHeightRadius;
     public GameObject projectile;
     [SerializeField] Transform playerTransform;
     [SerializeField] Animator enemyAnim;
@@ -31,6 +32,7 @@ public class Shooter_Follow : Enemies
         SetAttackRadius(attackRadius);
         SetFollowRadius(followRadius);
         SetAttackDelay(attackDelay);
+        SetAttackHeightRadius(attackHeightRadius);
         m_canShoot = true;
     }
 
@@ -42,44 +44,47 @@ public class Shooter_Follow : Enemies
             if (m_isDeath == false)
                 StartCoroutine(Death());
         }
-        if (CheckFollowRadius(playerTransform.position.x, transform.position.x))
-        {
-            if (playerTransform.position.x < transform.position.x)
-            {
-                if (CheckAttackRadius(playerTransform, transform) && m_canShoot)
-                {
-                    StartCoroutine(EnemyShoot_L());
-                    m_canShoot = false;
-                }
-                else if (!CheckAttackRadiusX(playerTransform, transform))
-                {
-                    transform.position += new Vector3(-GetMoveSpeed() * Time.deltaTime, 0f, 0f);
-                    enemyAnim.SetBool("AttackAnim", false);
-                    enemyAnim.SetBool("WalkAnim", true);
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                }
-            }
-            else if (playerTransform.position.x > transform.position.x)
-            {
-                if (CheckAttackRadius(playerTransform, transform) && m_canShoot)
-                {
-                    StartCoroutine(EnemyShoot_R());
-                    m_canShoot = false;
-                }
-                else if (!CheckAttackRadiusX(playerTransform, transform))
-                {
-                    transform.position += new Vector3(GetMoveSpeed() * Time.deltaTime, 0f, 0f);
-                    enemyAnim.SetBool("AttackAnim", false);
-                    enemyAnim.SetBool("WalkAnim", true);
-                    transform.eulerAngles = new Vector3(0, 180, 0);
-                }
-            }
-        }
         else
         {
-            enemyAnim.SetBool("WalkAnim", false);
-            enemyAnim.SetBool("AttackAnim", false);
-        }                                
+            if (CheckFollowRadius(playerTransform.position.x, transform.position.x))
+            {
+                if (playerTransform.position.x < transform.position.x)
+                {
+                    if (CheckAttackRadius(playerTransform, transform) && m_canShoot)
+                    {
+                        StartCoroutine(EnemyShoot_L());
+                        m_canShoot = false;
+                    }
+                    else if (!CheckAttackRadiusX(playerTransform, transform))
+                    {
+                        transform.position += new Vector3(-GetMoveSpeed() * Time.deltaTime, 0f, 0f);
+                        enemyAnim.SetBool("AttackAnim", false);
+                        enemyAnim.SetBool("WalkAnim", true);
+                        transform.eulerAngles = new Vector3(0, 0, 0);
+                    }
+                }
+                else if (playerTransform.position.x > transform.position.x)
+                {
+                    if (CheckAttackRadius(playerTransform, transform) && m_canShoot)
+                    {
+                        StartCoroutine(EnemyShoot_R());
+                        m_canShoot = false;
+                    }
+                    else if (!CheckAttackRadiusX(playerTransform, transform))
+                    {
+                        transform.position += new Vector3(GetMoveSpeed() * Time.deltaTime, 0f, 0f);
+                        enemyAnim.SetBool("AttackAnim", false);
+                        enemyAnim.SetBool("WalkAnim", true);
+                        transform.eulerAngles = new Vector3(0, 180, 0);
+                    }
+                }
+            }
+            else
+            {
+                enemyAnim.SetBool("WalkAnim", false);
+                enemyAnim.SetBool("AttackAnim", false);
+            }
+        }
     }
     public void Damage(int dmg)
     {

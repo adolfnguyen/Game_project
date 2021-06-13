@@ -18,6 +18,7 @@ public class Shooter_Shoot_Toward_Player : Enemies
     public GameObject projectile;
     private bool m_isDeath = false;
     public float shootingPower = 20f;
+    public float attackHeightRadius;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class Shooter_Shoot_Toward_Player : Enemies
         SetHitPoint(hitPoint);
         SetAttackRadius(attackRadius);
         SetAttackDelay(attackDelay);
+        SetAttackHeightRadius(attackHeightRadius);
         m_canShoot = true;
     }
 
@@ -69,8 +71,8 @@ public class Shooter_Shoot_Toward_Player : Enemies
         enemyAnim.SetBool("WalkAnim", false);
         yield return new WaitForSeconds(attackDelay);
         enemyAnim.SetBool("AttackAnim", true);
-        transform.eulerAngles = new Vector3(0, 0, 0);
-        GameObject bullet = Instantiate(projectile, m_firePoint.position, Quaternion.identity);
+        transform.eulerAngles = new Vector3(0, 180, 0);
+        Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
         yield return new WaitForSeconds(attackDelay);
         enemyAnim.SetBool("AttackAnim", false);
         m_canShoot = true;
@@ -81,7 +83,7 @@ public class Shooter_Shoot_Toward_Player : Enemies
         enemyAnim.SetBool("WalkAnim", false);
         yield return new WaitForSeconds(attackDelay);
         enemyAnim.SetBool("AttackAnim", true);
-        transform.eulerAngles = new Vector3(0, 180, 0);
+        transform.eulerAngles = new Vector3(0, 0, 0);
         Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
         yield return new WaitForSeconds(attackDelay);
         enemyAnim.SetBool("AttackAnim", false);
