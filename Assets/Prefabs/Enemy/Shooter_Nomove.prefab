@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 6087279405499553931}
   - component: {fileID: 307763934}
   m_Layer: 10
-  m_Name: Shooter_1 1
+  m_Name: Shooter_Nomove
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 6087279405499553928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.58, y: -1.2856646, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 600027784}
   m_Father: {fileID: 0}
@@ -81,12 +81,13 @@ MonoBehaviour:
   moveSpeed: 0
   attackDamage: 50
   hitPoint: 500
-  attackRadius: 15
+  attackRadius: 14
+  attackHeightRadius: 2
   enemyAnim: {fileID: 0}
   playerTransform: {fileID: 0}
   attackDelay: 0.5
   m_firePoint: {fileID: 600027784}
-  projectile: {fileID: 6304962397769326034, guid: fbba78abf2a258a4ba71378c54831ce4, type: 3}
+  projectile: {fileID: 6304962397769326034, guid: 83b839c8d10e6ac4db80ee43b402bc45, type: 3}
 --- !u!212 &6087279405499553925
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127,9 +128,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 720cbfb21e0300f4e92a734ca40388c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c857b492c67554b438faba5032c78a05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 6.42, y: 5}
@@ -172,18 +173,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.29820108, y: -0.62663126}
+  m_Offset: {x: 0.021503687, y: 0.13155222}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.42, y: 5}
+    oldSize: {x: 5.13, y: 12.2}
     newSize: {x: 6.42, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9313431, y: 2.1461844}
+  m_Size: {x: 4.1829143, y: 11.333726}
   m_EdgeRadius: 0
 --- !u!95 &307763934
 Animator:

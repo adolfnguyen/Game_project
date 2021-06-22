@@ -4,51 +4,36 @@ using UnityEngine;
 
 public class ThrowerProjectile : MonoBehaviour
 {
-    public Transform Target;
-    public float firingAngle = 45.0f;
-    public float gravity = 9.8f;
-
-    private Transform m_myTransform;
-    public Transform Projectile;
-    private void Awake()
-    {
-        m_myTransform = transform;
-    }
-    // Start is called before the first frame update
+    public float speed;
+    public int dmg;
+    private bool m_isBloom = false;
+    [SerializeField] Animator mineAnim;
+    private Rigidbody2D m_rb;
     void Start()
     {
-        StartCoroutine(SimulateThrowing());
+        mineAnim = gameObject.GetComponent<Animator>();
+        m_rb = gameObject.GetComponent<Rigidbody2D>();
+    }
+    void Update()
+    {
+        transform.position -= new Vector3(speed * Time.deltaTime, 0f, 0f);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            m_rb.bodyType = RigidbodyType2D.Static;
+            collision.gameObject.SendMessageUpwards("Damage", dmg);
+            if (m_isBloom == false)
+                StartCoroutine(Bloom());
+        }
     }
 
-    IEnumerator SimulateThrowing()
+    IEnumerator Bloom()
     {
-        yield return new WaitForSeconds(1.5f);
-
-        //Thay đổi offset nếu cần thiết
-        Projectile.position = m_myTransform.position + new Vector3(0, 0, 0);
-        //Tính toán khoảng cách của target
-        float targetDistance = Vector3.Distance(Projectile.position, Target.position);
-
-        //Tính toán vận tốc cần thiết để ném đến mục tiêu với 1 góc độ xác định
-        float projectileVelocity = targetDistance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity);
-
-        //Lấy ra thành phần x, y của vận tốc
-        float Vx = Mathf.Sqrt(projectileVelocity) * Mathf.Cos(firingAngle * Mathf.Deg2Rad);
-        float Vy = Mathf.Sqrt(projectileVelocity) * Mathf.Sin(firingAngle * Mathf.Deg2Rad);
-
-        //Tính toán thời gian bay
-        float flightDuration = targetDistance / Vx;
-
-        //Xoay lựu đạn về phía target
-        Projectile.rotation = Quaternion.LookRotation(Target.position - Projectile.position);
-
-        float elapseTime = 0;
-
-        while (elapseTime < flightDuration)
-        {
-            Projectile.Translate(0, (Vy - (gravity * elapseTime)) * Time.deltaTime, Vx * Time.deltaTime);
-            elapseTime += Time.deltaTime;
-            yield return null;
-        }
+        m_isBloom = true;
+        mineAnim.SetBool("BloomAnim", true);
+        yield return new WaitForSeconds(0.40f);
+        Destroy(transform.gameObject);
     }
 }

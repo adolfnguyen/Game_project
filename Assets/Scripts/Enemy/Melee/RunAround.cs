@@ -8,13 +8,13 @@ public class RunAround : Enemies
     public int attackDamage;
     public int hitPoint;
     public float attackRadius;
+    public float attackHeightRadius;
     [SerializeField] Animator enemyAnim;
     [SerializeField] Transform playerTransform;
     SpriteRenderer m_enemySR;
 
     public float attackDelay;
     private bool m_canAttack;
-    public GameObject projectile;
     private int m_walkState = 0;
     private bool m_isDeath = false;
 
@@ -31,6 +31,7 @@ public class RunAround : Enemies
         SetHitPoint(hitPoint);
         SetAttackRadius(attackRadius);
         SetAttackDelay(attackDelay);
+        SetAttackHeightRadius(attackHeightRadius);
         m_canAttack = true;
     }
 
@@ -74,6 +75,7 @@ public class RunAround : Enemies
     IEnumerator Attack()
     {
         enemyAnim.SetBool("AttackAnim", true);
+        enemyAnim.SetBool("WalkAnim", false);
         yield return new WaitForSeconds(attackDelay);
         m_canAttack = true;
     }
@@ -85,10 +87,10 @@ public class RunAround : Enemies
         enemyAnim.SetBool("DeathAnim", true);
         yield return new WaitForSeconds(0.85f);
         Destroy(transform.gameObject);
-
     }
     void MoveLeft()
     {
+        enemyAnim.SetBool("AttackAnim", false);
         m_walkState = 1;
         transform.position = Vector2.MoveTowards(transform.position, waypoints[0].transform.position,
                 moveSpeed * Time.deltaTime);
@@ -98,6 +100,7 @@ public class RunAround : Enemies
 
     void MoveRight()
     {
+        enemyAnim.SetBool("AttackAnim", false);
         m_walkState = 2;
         transform.position = Vector2.MoveTowards(transform.position, waypoints[1].transform.position,
                 moveSpeed * Time.deltaTime);

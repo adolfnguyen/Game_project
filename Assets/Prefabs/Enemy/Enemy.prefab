@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3445573943817568676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.11, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4887794515492085576}
@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.7, y: 0}
+  m_Offset: {x: 2.4014611, y: -0.99681115}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.04, y: 3.39}
+  m_Size: {x: 1.3353541, y: 1.9870806}
   m_EdgeRadius: 0
 --- !u!114 &1814640257379485651
 MonoBehaviour:
@@ -101,7 +101,7 @@ Transform:
   m_GameObject: {fileID: 4887794515492085572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.021, y: -2.081, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 8181171244358856581}
   m_Father: {fileID: 0}
@@ -124,6 +124,7 @@ MonoBehaviour:
   hitPoint: 100
   attackRadius: 1.2
   followRadius: 20
+  attackHeightRadius: 2
   trigger: {fileID: 8109654627146009922}
   playerTransform: {fileID: 5207967441306602811, guid: eaac258798e0f024c9a960d32925eca9, type: 3}
   enemyAnim: {fileID: 9116497994218103353}
@@ -167,7 +168,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 70e365a0fdee7ec47b3ee40870988f81, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c239e0c19518c942a46c347a2dd1781, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -212,18 +213,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.10488057, y: -0.32308275}
+  m_Offset: {x: -0.32639086, y: 0.13243008}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.3, y: 5.19}
+    oldSize: {x: 4.96, y: 12.02}
     newSize: {x: 4.3, y: 5.19}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6743321, y: 4.313063}
+  m_Size: {x: 3.6342304, y: 11.524206}
   m_EdgeRadius: 0
 --- !u!95 &9116497994218103353
 Animator:

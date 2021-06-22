@@ -8,6 +8,7 @@ public class Tanker : Enemies
     public int attackDamage;
     public int hitPoint;
     public float attackRadius;
+    public float attackHeightRadius;
     [SerializeField] Animator enemyAnim;
     [SerializeField] Transform playerTransform;
     SpriteRenderer m_enemySR;
@@ -24,6 +25,7 @@ public class Tanker : Enemies
         SetAttackDamage(attackDamage);
         SetHitPoint(hitPoint);
         SetAttackRadius(attackRadius);
+        SetAttackHeightRadius(attackHeightRadius);
         trigger.enabled = false;
     }
 

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1552805967527523893}
   - component: {fileID: 1552805967527523898}
   - component: {fileID: 1552805967527523899}
-  - component: {fileID: 4753250970427176046}
   m_Layer: 10
   m_Name: Shooter_Shoot_Toward_Player
   m_TagString: Enemy
@@ -58,6 +57,7 @@ MonoBehaviour:
   m_firePoint: {fileID: 4753250970166369336}
   projectile: {fileID: 3634283724209099369, guid: 8083946ba72549c4c895401b4b43d61d, type: 3}
   shootingPower: 25
+  attackHeightRadius: 0
 --- !u!212 &1552805967527523893
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -156,25 +156,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9313431, y: 2.1461844}
   m_EdgeRadius: 0
---- !u!95 &4753250970427176046
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552805967527523896}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6b57cb8becfe52848aa9abcce4b23ce8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4753250970166369335
 GameObject:
   m_ObjectHideFlags: 0

@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6087279405499553925}
   - component: {fileID: 6087279405499553930}
   - component: {fileID: 6087279405499553931}
-  - component: {fileID: 307763934}
+  - component: {fileID: 4926211974046994913}
   m_Layer: 10
   m_Name: Shooter_Follow
   m_TagString: Enemy
@@ -81,12 +81,13 @@ MonoBehaviour:
   moveSpeed: 3
   attackDamage: 50
   hitPoint: 500
-  attackRadius: 12
+  attackRadius: 9
   followRadius: 20
+  attackHeightRadius: 2
   projectile: {fileID: 6304962397769326034, guid: fbba78abf2a258a4ba71378c54831ce4, type: 3}
   playerTransform: {fileID: 0}
   enemyAnim: {fileID: 0}
-  attackDelay: 0.5
+  attackDelay: 0.6
   m_firePoint: {fileID: 600027784}
 --- !u!212 &6087279405499553925
 SpriteRenderer:
@@ -186,7 +187,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9313431, y: 2.1461844}
   m_EdgeRadius: 0
---- !u!95 &307763934
+--- !u!95 &4926211974046994913
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -196,7 +197,7 @@ Animator:
   m_GameObject: {fileID: 6087279405499553928}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6b57cb8becfe52848aa9abcce4b23ce8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 34052b4d98d77414b900a65f05e692c5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -8,6 +8,7 @@ public class Shooter_NoMove : Enemies
     public int attackDamage;
     public int hitPoint;
     public float attackRadius;
+    public float attackHeightRadius;
     [SerializeField] Animator enemyAnim;
     [SerializeField] Transform playerTransform;
     SpriteRenderer m_enemySR;
@@ -24,6 +25,7 @@ public class Shooter_NoMove : Enemies
         playerTransform = FindObjectOfType<Player>().GetComponent<Transform>();
         enemyAnim = gameObject.GetComponent<Animator>();
         m_enemySR = GetComponent<SpriteRenderer>();
+        SetAttackHeightRadius(attackHeightRadius);
         SetMoveSpeed(moveSpeed);
         SetAttackDamage(attackDamage);
         SetHitPoint(hitPoint);
@@ -48,7 +50,6 @@ public class Shooter_NoMove : Enemies
                 {
                     StartCoroutine(EnemyShoot_L());
                     m_canShoot = false;
-
                 }
                 else
                 {
@@ -70,6 +71,8 @@ public class Shooter_NoMove : Enemies
         enemyAnim.SetBool("AttackAnim", true);
         transform.eulerAngles = new Vector3(0, 0, 0);
         Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
+        yield return new WaitForSeconds(0.05f);
+        Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
         yield return new WaitForSeconds(attackDelay);
         enemyAnim.SetBool("AttackAnim", false);
         m_canShoot = true;
@@ -81,6 +84,8 @@ public class Shooter_NoMove : Enemies
         yield return new WaitForSeconds(attackDelay);
         enemyAnim.SetBool("AttackAnim", true);
         transform.eulerAngles = new Vector3(0, 180, 0);
+        Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
+        yield return new WaitForSeconds(0.05f);
         Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
         yield return new WaitForSeconds(attackDelay);
         enemyAnim.SetBool("AttackAnim", false);

@@ -10,6 +10,7 @@ public class Enemies : MonoBehaviour
     float m_attackDelay;
     float m_attackRadius;
     float m_followRadius;
+    float m_attackHeightRadius;
     
     public void SetMoveSpeed(int speed)
     {
@@ -61,6 +62,16 @@ public class Enemies : MonoBehaviour
         m_attackRadius = arad;
     }
 
+    public void SetAttackHeightRadius(float aHR)
+    {
+        m_attackHeightRadius = aHR;
+    }
+
+    public float GetAttackHeightRadius()
+    {
+        return m_attackHeightRadius;
+    }
+
     public bool CheckFollowRadius(float playerPosition, float enemyPosition)
     {
         if (Mathf.Abs(playerPosition - enemyPosition) < m_followRadius)
@@ -73,12 +84,13 @@ public class Enemies : MonoBehaviour
     public bool CheckAttackRadius(Transform playerTransform, Transform enemyTransform)
     {
         if (Mathf.Abs(playerTransform.position.x - enemyTransform.position.x) < m_attackRadius &&
-            Mathf.Abs(playerTransform.position.y - enemyTransform.position.y) < 2)
+            Mathf.Abs(playerTransform.position.y - enemyTransform.position.y) < m_attackHeightRadius)
         {
             return true;
         }
         else return false;
     }
+
     public bool CheckAttackRadiusX(Transform playerTransform, Transform enemyTransform)
     {
         if (Mathf.Abs(playerTransform.position.x - enemyTransform.position.x) < m_attackRadius)
