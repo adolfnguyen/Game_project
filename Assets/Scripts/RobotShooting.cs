@@ -8,6 +8,8 @@ public class RobotShooting : MonoBehaviour
     // Start is called before the first frame update
     public Transform firePoint;
     public GameObject bullet;
+    public AudioSource aus;
+    public AudioClip shooting;
     public float Bullet;
     Animator anim;
     public float attackdelay = 0.3f;
@@ -36,6 +38,10 @@ public class RobotShooting : MonoBehaviour
             else
             {
                 Debug.Log("het dan");
+            }
+            if(aus && shooting)
+            {
+                aus.PlayOneShot(shooting);
             }
         }
         else if(Input.GetKeyUp(KeyCode.X)) 

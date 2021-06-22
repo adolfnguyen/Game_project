@@ -19,6 +19,7 @@ public class SpawnZombies : MonoBehaviour
                 Instantiate(enemy, pos, Quaternion.identity);
                 spawnPoint.SetActive(false);
             }
+
         }
     }
 }
