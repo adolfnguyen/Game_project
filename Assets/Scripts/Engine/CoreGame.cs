@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class CoreGame : MonoBehaviour
 {
     private static int state = 0;
-    private static int heal = 10000;
+    private static int heal = 1000;
     private static int bullet = 100;
     private static int curheal = 1000;
     private static int grenade = 100;
