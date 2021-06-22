@@ -122,30 +122,17 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            m_ground = true;
-            CoreGame.CurHeal -= 50;
-            EventManager.TriggerEvent(GameEvents.UPDATEHEAL);
-
+            Debug.Log("chạm địch");
+            //m_ground = true;
+            //CoreGame.CurHeal -= 50;
+            //EventManager.TriggerEvent(GameEvents.UPDATEHEAL);
+            rigidbody.velocity = new Vector2(-10f, 5f);
+            Damage(50);
+            
         }
     }
+    
 
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Ground"))
-    //    {
-    //        Debug.Log(" chua cham dat");
-    //        aim.SetBool("IsJumping", true);
-    //        m_ground = false;
-
-    //    }
-
-    //}
-    /*public void Damage(int dmg)
-    {
-        CoreGame.CurHeal -= dmg;
-        EventManager.TriggerEvent(GameEvents.UPDATEHEAL);
-        Debug.Log("nhập sát thương");
-    }*/
     public void Damage(int dmg)
     {
         if (m_isInvincible) return;
