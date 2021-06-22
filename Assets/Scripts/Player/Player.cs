@@ -5,16 +5,20 @@ using UnityEngine.Experimental.Animations;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices.WindowsRuntime;
+using UnityEngine.EventSystems;
+
 public class Player : MonoBehaviour
 {
     // các thông số cơ bản cuiar người chơi
-    public bool m_ground ;
+    public bool m_ground;
     Rigidbody2D rigidbody;
     public Animator aim;
-   
+     
     public Collider2D secondCollider;
     public bool bendown = false;
     private bool m_isInvincible = false;
+    private bool death;
     [SerializeField] private float invincibilityDurationSeconds;
     [SerializeField] private float invincibilityDeltaTime;
     private SpriteRenderer m_spriteRenderer;
@@ -30,20 +34,34 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-        
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        aim.SetFloat("force", Mathf.Abs(rigidbody.velocity.x));
-        ClickProcess();
+        
         if (CoreGame.CurHeal <= 0)
         {
-            Death();
+            if (death == false)
+            {
+                EventManager.TriggerEvent(GameEvents.GAMEOVER);
+                //aim.SetBool("Death", true);
+                CoreGame.State = 1;
+                CoreGame.CurHeal = 0;
+                Debug.Log("chết");
+                StartCoroutine(Death());
+            }
         }
+
+        if (CoreGame.GameOver())
+        {
+            return;
+        }
+        aim.SetFloat("force", Mathf.Abs(rigidbody.velocity.x));
+        ClickProcess();
+
 
     }
     private void ClickProcess()
@@ -68,10 +86,14 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.UpArrow) && m_ground)
         {
-            if(!bendown)
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x, 14.0f);
-     
-            
+            if (!bendown)
+            {
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, 14.0f);
+                m_ground = false;
+                aim.SetBool("IsJumping", true);
+            }
+
+
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -81,7 +103,7 @@ public class Player : MonoBehaviour
             aim.SetBool("Bending", true);
             bendown = true;
         }
-       
+
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
@@ -98,22 +120,26 @@ public class Player : MonoBehaviour
             aim.SetBool("IsJumping", false);
             m_ground = true;
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            Debug.Log(" chua cham dat");
-            aim.SetBool("IsJumping", true);
-            m_ground = false;
-
-        }
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            m_ground = true;
             CoreGame.CurHeal -= 50;
+            EventManager.TriggerEvent(GameEvents.UPDATEHEAL);
+
         }
     }
+
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Ground"))
+    //    {
+    //        Debug.Log(" chua cham dat");
+    //        aim.SetBool("IsJumping", true);
+    //        m_ground = false;
+
+    //    }
+
+    //}
     /*public void Damage(int dmg)
     {
         CoreGame.CurHeal -= dmg;
@@ -128,12 +154,12 @@ public class Player : MonoBehaviour
         EventManager.TriggerEvent(GameEvents.UPDATEHEAL);
         if (CoreGame.CurHeal <= 0)
         {
-            CoreGame.CurHeal = 0;
+
             return;
         }
 
         StartCoroutine(BecomeTemporarilyInvincible());
-    }   
+    }
     private IEnumerator BecomeTemporarilyInvincible()
     {
         m_isInvincible = true;
@@ -153,9 +179,18 @@ public class Player : MonoBehaviour
         m_spriteRenderer.maskInteraction = SpriteMaskInteraction.None;
         m_isInvincible = false;
     }
-    public void Death()
-    {        
+    public IEnumerator Death()
+    {
+        death = true;
+        aim.SetBool("IsJumping", false);
+        aim.SetBool("Attackingg", false);
+        aim.SetBool("Shooting", false);
+        aim.SetBool("Bending", false);
+        aim.SetFloat("force", 0);
         aim.SetBool("Death", true);
-        EventManager.TriggerEvent(GameEvents.GAMEOVER);
+        yield return new WaitForSeconds(0.1f);
+
+        //EventManager.TriggerEvent(GameEvents.GAMEOVER);
+
     }
 }

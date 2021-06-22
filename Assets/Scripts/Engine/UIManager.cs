@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverPanel;
     public Text Bullet;
     public Text Greande;
+    public Text inputText;
     public Slider Heal;
     // Start is called before the first frame update
     void Start()
