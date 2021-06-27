@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 4767080185864779919}
   - component: {fileID: 4574599402891544293}
   - component: {fileID: 9061750476662568107}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,8 +200,8 @@ CircleCollider2D:
   m_GameObject: {fileID: 4767080185864779914}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 6200000, guid: 09f4851215207394d8b922c3f0fdd2fc, type: 2}
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.25, y: -0.54}

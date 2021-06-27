@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\Enemy\Tanker\Tanker.cs" />
     <Compile Include="Assets\Scripts\GrenadeTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerStatus.cs" />
+    <Compile Include="Assets\Scripts\Engine\UIMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

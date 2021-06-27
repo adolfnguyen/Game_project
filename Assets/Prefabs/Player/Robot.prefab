@@ -364,7 +364,7 @@ MonoBehaviour:
   grenade: {fileID: 4767080185864779914, guid: cefbc19fd6dc8dd449fa70579ff9a3d1, type: 3}
   firePoint: {fileID: 1082089376}
   launch: 2.5
-  distance: 20
+  distance: 10
   speed: 1.5
   ngrenade: 0
 --- !u!114 &16115829

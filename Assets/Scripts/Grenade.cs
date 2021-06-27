@@ -22,6 +22,25 @@ public class Grenade : MonoBehaviour
         
        
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Lựu đạn chạm địch");
+            trigger.SetActive(true);
+            grenade.SetActive(false);
+            gren.velocity = Vector2.zero;
+            Destroy(transform.gameObject, 0.5f);
+
+        }
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("Lựu đạn chạm đất");
+            gren.AddForce(Vector2.up * 5);
+            StartCoroutine(Explore());
+           
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Enemy"))
@@ -35,12 +54,19 @@ public class Grenade : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Ground"))
         {
-           
-            trigger.SetActive(true);
-            gren.velocity = Vector2.zero;
-            grenade.SetActive(false);
-            Destroy(transform.gameObject,0.5f);
+
+          
+            
         }
     }
+      
+    IEnumerator Explore()
+    {
 
+        yield return new WaitForSeconds(1f);
+        trigger.SetActive(true);
+        gren.velocity = Vector2.zero;
+        grenade.SetActive(false);
+        Destroy(transform.gameObject, 0.5f);
+    }
 }
