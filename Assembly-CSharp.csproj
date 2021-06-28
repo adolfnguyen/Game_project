@@ -80,12 +80,15 @@
     <Compile Include="Assets\Scripts\Engine\EventManager.cs" />
     <Compile Include="Assets\Scripts\RobotShooting.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnenmyAttackTrigger.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\StateMachine.cs" />
     <Compile Include="Assets\Scripts\Enemy\Melee\RunAround.cs" />
     <Compile Include="Assets\Scripts\Enemy\Ranger\Shooter_Shoot_Toward_Player.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\AI.cs" />
     <Compile Include="Assets\Scripts\Engine\GameEvents.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Enemy\Mine\Fish.cs" />
     <Compile Include="Assets\Scripts\Enemy\Melee\EnemyAttack.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\SecondState.cs" />
     <Compile Include="Assets\Scripts\Engine\UIManager.cs" />
     <Compile Include="Assets\Scripts\BulletDrop.cs" />
     <Compile Include="Assets\Scripts\Engine\Camerafollow.cs" />
@@ -93,10 +96,8 @@
     <Compile Include="Assets\Scripts\Enemy\Tanker\Tanker.cs" />
     <Compile Include="Assets\Scripts\GrenadeTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerStatus.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Boss\AI.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\FirstState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Boss\SecondState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Boss\StateMachine.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\Nothing.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
