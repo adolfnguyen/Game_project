@@ -9,11 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-<<<<<<< Updated upstream
     <ProjectGuid>{B20EC4B4-F4A6-E897-C267-9CA4A787C06A}</ProjectGuid>
-=======
-    <ProjectGuid>{914B2AC2-7B66-C946-0AD1-19C3E7F74D2F}</ProjectGuid>
->>>>>>> Stashed changes
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -60,6 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Engine\UIMenu.cs" />
     <Compile Include="Assets\Scripts\Enemy\Ranger\Bullet_2.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\Nothing.cs" />
     <Compile Include="Assets\Scripts\Engine\SpawnZombies.cs" />
@@ -93,6 +90,7 @@
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Enemy\Mine\Fish.cs" />
     <Compile Include="Assets\Scripts\Enemy\Melee\EnemyAttack.cs" />
+    <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\SecondState.cs" />
     <Compile Include="Assets\Scripts\Engine\UIManager.cs" />
     <Compile Include="Assets\Scripts\BulletDrop.cs" />
@@ -102,12 +100,6 @@
     <Compile Include="Assets\Scripts\GrenadeTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerStatus.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\FirstState.cs" />
-<<<<<<< Updated upstream
-    <Compile Include="Assets\Scripts\Enemy\Boss\Nothing.cs" />
-=======
-    <Compile Include="Assets\Scripts\Door.cs" />
-    <Compile Include="Assets\Scripts\Engine\UIMenu.cs" />
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
