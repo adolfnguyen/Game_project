@@ -5,7 +5,7 @@ using UnityEngine;
 public class Grenade : MonoBehaviour
 {
     // Start is called before the first frame update
-   
+
     Rigidbody2D gren;
 
     public GameObject trigger;
@@ -19,8 +19,8 @@ public class Grenade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-       
+
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -38,28 +38,28 @@ public class Grenade : MonoBehaviour
             Debug.Log("Lựu đạn chạm đất");
             gren.AddForce(Vector2.up * 5);
             StartCoroutine(Explore());
-           
+
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Lựu đạn chạm địch");
-            trigger.SetActive(true) ;
+            trigger.SetActive(true);
             grenade.SetActive(false);
             gren.velocity = Vector2.zero;
-            Destroy(transform.gameObject,0.5f);
+            Destroy(transform.gameObject, 0.5f);
 
         }
         if (collision.gameObject.CompareTag("Ground"))
         {
 
-          
-            
+
+
         }
     }
-      
+
     IEnumerator Explore()
     {
 

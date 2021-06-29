@@ -70,7 +70,7 @@ public class UIManager : MonoBehaviour
             pause = false;
         }
     }
-        public void Resume()
+    public void Resume()
     {
         pause = false;
     }

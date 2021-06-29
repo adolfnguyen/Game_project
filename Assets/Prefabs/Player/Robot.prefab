@@ -74,7 +74,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.19, y: -0.71}
+  m_Offset: {x: 0, y: -0.43}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -85,7 +85,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.51, y: 3.27}
+  m_Size: {x: 2.45, y: 3.27}
   m_EdgeRadius: 0
 --- !u!1 &5207967440198971113
 GameObject:
@@ -282,7 +282,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.17, y: 0}
+  m_Offset: {x: -0.13, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -293,7 +293,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6, y: 5.14}
+  m_Size: {x: 2.52, y: 5.14}
   m_EdgeRadius: 0
 --- !u!50 &5207967441306602810
 Rigidbody2D:
@@ -381,7 +381,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1082089376}
   bullet: {fileID: 436712746422353749, guid: b01a1a1ebde39c34390f1d998a8ee804, type: 3}
-  aus: {fileID: 0}
-  shooting: {fileID: 0}
   Bullet: 0
   attackdelay: 0.3

@@ -11,6 +11,7 @@ TagManager:
   - Trigger
   - BulletDrop
   - Mine
+  - enemy
   - UI
   layers:
   - Default
@@ -20,7 +21,7 @@ TagManager:
   - Water
   - UI
   - BulletDrop
-  - Grenade
+  - Greande
   - 
   - 
   - Enemy

@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public bool m_ground;
     Rigidbody2D rigidbody;
     public Animator aim;
-     
+
     public Collider2D secondCollider;
     public bool bendown = false;
     private bool m_isInvincible = false;
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (CoreGame.CurHeal <= 0)
         {
             if (death == false)
@@ -128,10 +128,10 @@ public class Player : MonoBehaviour
             //EventManager.TriggerEvent(GameEvents.UPDATEHEAL);
             rigidbody.velocity = new Vector2(-10f, 5f);
             Damage(50);
-            
+
         }
     }
-    
+
 
     public void Damage(int dmg)
     {

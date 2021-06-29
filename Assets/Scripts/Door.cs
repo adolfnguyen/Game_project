@@ -47,7 +47,6 @@ public class Door : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             SceneManager.LoadScene(leveLoad);
-
         }
     }
 }

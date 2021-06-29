@@ -9,7 +9,7 @@ public class Throwing : MonoBehaviour
     Rigidbody2D shellInstance;
     public float launch= 10f;
     public float distance=10f;
-    public float speed=5f;
+    public float speed=10f;
     public int ngrenade;
     Transform gre;
    // Start is called before the first frame update

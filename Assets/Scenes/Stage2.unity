@@ -2369,6 +2369,19 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+<<<<<<< Updated upstream
+=======
+  - first: {x: 38, y: -5, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 17
+      m_TileSpriteIndex: 17
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+>>>>>>> Stashed changes
   - first: {x: 43, y: -5, z: 0}
     second:
       serializedVersion: 2
@@ -2469,6 +2482,29 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+<<<<<<< Updated upstream
+=======
+  - first: {x: 35, y: -4, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 17
+      m_TileSpriteIndex: 17
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 41, y: -4, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 17
+      m_TileSpriteIndex: 17
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+>>>>>>> Stashed changes
   - first: {x: 43, y: -4, z: 0}
     second:
       serializedVersion: 2
@@ -5015,6 +5051,11 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: a37be807006ae174495d64d77488ad4e, type: 2}
   - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: 973ad0f017faad442a69aac1567fd3fb, type: 2}
+<<<<<<< Updated upstream
+=======
+  - m_RefCount: 3
+    m_Data: {fileID: 11400000, guid: a2a8468daeb01a740a1dce8670a325ad, type: 2}
+>>>>>>> Stashed changes
   m_TileSpriteArray:
   - m_RefCount: 3
     m_Data: {fileID: -3627854407871609761, guid: 2ef4e098536fed1429d5310c678f0fc5, type: 3}
@@ -5050,8 +5091,15 @@ Tilemap:
     m_Data: {fileID: 2096794751010941262, guid: 2ef4e098536fed1429d5310c678f0fc5, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: -2218698658706304759, guid: 2ef4e098536fed1429d5310c678f0fc5, type: 3}
+<<<<<<< Updated upstream
   m_TileMatrixArray:
   - m_RefCount: 436
+=======
+  - m_RefCount: 3
+    m_Data: {fileID: -2215395698826879309, guid: 2ef4e098536fed1429d5310c678f0fc5, type: 3}
+  m_TileMatrixArray:
+  - m_RefCount: 439
+>>>>>>> Stashed changes
     m_Data:
       e00: 1
       e01: 0
@@ -5070,7 +5118,11 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
+<<<<<<< Updated upstream
   - m_RefCount: 436
+=======
+  - m_RefCount: 439
+>>>>>>> Stashed changes
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
