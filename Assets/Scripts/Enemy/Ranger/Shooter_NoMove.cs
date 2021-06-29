@@ -73,6 +73,8 @@ public class Shooter_NoMove : Enemies
         Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
         yield return new WaitForSeconds(0.05f);
         Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
+        yield return new WaitForSeconds(0.05f);
+        Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
         yield return new WaitForSeconds(attackDelay);
         enemyAnim.SetBool("AttackAnim", false);
         m_canShoot = true;
@@ -84,6 +86,8 @@ public class Shooter_NoMove : Enemies
         yield return new WaitForSeconds(attackDelay);
         enemyAnim.SetBool("AttackAnim", true);
         transform.eulerAngles = new Vector3(0, 180, 0);
+        Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
+        yield return new WaitForSeconds(0.05f);
         Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
         yield return new WaitForSeconds(0.05f);
         Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);

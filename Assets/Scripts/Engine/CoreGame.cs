@@ -6,25 +6,34 @@ public class CoreGame : MonoBehaviour
 {
     private static int state = 0;
     private static int heal = 1000;
-    private static int bullet = 20;
+    private static int bullet = 100;
     private static int curheal = 1000;
-    private static int grenade = 3;
+    private static int grenade = 100;
+    private static bool pause;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+    public static bool GameOver()
+    {
+        if (state == 1f)
+        {
+            return true;
+        }
+        return false;
     }
     public static void ResetStatus()
     {
-     state = 0;
-     heal = 1000;
-     Bullet = 20;
+        state = 0;
+        heal = 1000;
+        Bullet = 20;
     }
     public static void DecreaseBullet()
     {
@@ -69,4 +78,5 @@ public class CoreGame : MonoBehaviour
     public static int CurHeal { get => curheal; set => curheal = value; }
     public static int Bullet { get => bullet; set => bullet = value; }
     public static int Grenade { get => grenade; set => grenade = value; }
+    public static bool Pause { get => pause; set => pause = value; }
 }
