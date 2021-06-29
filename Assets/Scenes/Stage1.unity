@@ -231,10 +231,30 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1273979819}
+    - target: {fileID: 8063735515110981380, guid: 96937a61b513f8043afcb7042d00ebc5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8063735515143416213, guid: 96937a61b513f8043afcb7042d00ebc5, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8063735515143416213, guid: 96937a61b513f8043afcb7042d00ebc5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: abdd7a01cc0a1a3458c88da9c51d8644, type: 3}
     - target: {fileID: 8063735515694624027, guid: 96937a61b513f8043afcb7042d00ebc5, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8063735515732498208, guid: 96937a61b513f8043afcb7042d00ebc5, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8063735515732498208, guid: 96937a61b513f8043afcb7042d00ebc5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: abdd7a01cc0a1a3458c88da9c51d8644, type: 3}
     - target: {fileID: 8063735516036522749, guid: 96937a61b513f8043afcb7042d00ebc5, type: 3}
       propertyPath: m_Name
       value: UI
@@ -3260,7 +3280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273979817}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 122.18, y: 1.27, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
