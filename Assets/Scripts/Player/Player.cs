@@ -128,10 +128,19 @@ public class Player : MonoBehaviour
             //EventManager.TriggerEvent(GameEvents.UPDATEHEAL);
             rigidbody.velocity = new Vector2(-10f, 5f);
             Damage(50);
-
+        }
+        if (collision.gameObject.name.Equals("MovingPlatform"))
+        {
+            transform.parent = collision.transform;
         }
     }
-
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Equals("MovingPlatform"))
+        {
+            transform.parent = null;
+        }
+    }
 
     public void Damage(int dmg)
     {
@@ -178,6 +187,5 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         //EventManager.TriggerEvent(GameEvents.GAMEOVER);
-
     }
 }
