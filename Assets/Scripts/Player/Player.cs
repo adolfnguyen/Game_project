@@ -146,7 +146,7 @@ public class Player : MonoBehaviour
     {
         if (m_isInvincible) return;
         CoreGame.CurHeal -= dmg;
-        Debug.Log("nhập sát thương");
+        Debug.Log("nhận sát thương");
         if (transform.eulerAngles == new Vector3(0, 0, 0))
         {
             rigidbody.velocity = new Vector2(-10f, 5f);
