@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float invincibilityDeltaTime;
     private SpriteRenderer m_spriteRenderer;
     private Vector3 m_scaleVec = new Vector3(0.38f, 0.3f, 1f);
+    Vector3 pos;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -34,8 +35,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-
-
+        pos = transform.position;
     }
 
     // Update is called once per frame
@@ -84,12 +84,12 @@ public class Player : MonoBehaviour
             }
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow) && m_ground)
+        // && m_ground
+        if (Input.GetKeyDown(KeyCode.UpArrow) && rigidbody.velocity.y == 0)
         {
             if (!bendown)
             {
-                rigidbody.velocity = new Vector2(rigidbody.velocity.x, 14.0f);
-                m_ground = false;
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, 14.0f);              
                 aim.SetBool("IsJumping", true);
             }
 
@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log(" cham dat");
             aim.SetBool("IsJumping", false);
-            m_ground = true;
+            //m_ground = true;
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
             //m_ground = true;
             //CoreGame.CurHeal -= 50;
             //EventManager.TriggerEvent(GameEvents.UPDATEHEAL);
-            rigidbody.velocity = new Vector2(-10f, 5f);
+            
             Damage(50);
         }
         if (collision.gameObject.name.Equals("MovingPlatform"))
@@ -147,6 +147,12 @@ public class Player : MonoBehaviour
         if (m_isInvincible) return;
         CoreGame.CurHeal -= dmg;
         Debug.Log("nhập sát thương");
+        if (transform.eulerAngles == new Vector3(0, 0, 0))
+        {
+            rigidbody.velocity = new Vector2(-10f, 5f);
+        }
+        else { rigidbody.velocity = new Vector2(10f, 5f); }
+        
         EventManager.TriggerEvent(GameEvents.UPDATEHEAL);
         if (CoreGame.CurHeal <= 0)
         {
