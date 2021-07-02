@@ -68,7 +68,7 @@
     <Compile Include="Assets\Scripts\SomethingElse\MovingPlatform.cs" />
     <Compile Include="Assets\Scripts\Grenade.cs" />
     <Compile Include="Assets\Scripts\Player\Throwing.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Mine\Mine.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Obstacle\Mine.cs" />
     <Compile Include="Assets\Scripts\Enemy\Thrower\Thrower.cs" />
     <Compile Include="Assets\Scripts\Engine\CoreGame.cs" />
     <Compile Include="Assets\Scripts\Enemy\SpawnPointScripts\SpawnScript.cs" />
@@ -82,7 +82,7 @@
     <Compile Include="Assets\Scripts\Engine\SingletonMonobehaviour.cs" />
     <Compile Include="Assets\Scripts\Engine\EventManager.cs" />
     <Compile Include="Assets\Scripts\RobotShooting.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Mine\Bottom_Spike.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Obstacle\Bottom_Spike.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnenmyAttackTrigger.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\StateMachine.cs" />
     <Compile Include="Assets\Scripts\Enemy\Melee\RunAround.cs" />
@@ -90,7 +90,7 @@
     <Compile Include="Assets\Scripts\Enemy\Boss\AI.cs" />
     <Compile Include="Assets\Scripts\Engine\GameEvents.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Mine\Fish.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Obstacle\Fish.cs" />
     <Compile Include="Assets\Scripts\Enemy\Melee\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\SecondState.cs" />
@@ -102,6 +102,9 @@
     <Compile Include="Assets\Scripts\GrenadeTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerStatus.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\FirstState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Obstacle\Top_Spike.cs" />
+    <Compile Include="Assets\Scripts\Enemy\LaserGun\LaserGun_1.cs" />
+    <Compile Include="Assets\Scripts\Enemy\LaserGun\LaserLine.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -13,6 +13,7 @@ TagManager:
   - Mine
   - enemy
   - UI
+  - LaserGun
   layers:
   - Default
   - TransparentFX
