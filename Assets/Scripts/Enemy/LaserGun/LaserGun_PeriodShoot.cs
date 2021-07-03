@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserGun_1 : MonoBehaviour
+public class LaserGun_PeriodShoot : MonoBehaviour
 {
     private bool m_canShoot;
     public GameObject projectile;
@@ -11,6 +11,7 @@ public class LaserGun_1 : MonoBehaviour
     SpriteRenderer m_sr;
     public Sprite shootSprite;
     public Sprite idleSprite;
+    public float delayAfterAwake;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class LaserGun_1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_canShoot)
+        if (m_canShoot && (Time.time > delayAfterAwake))
         {
             if (seconds <= 0)
             {
@@ -38,12 +39,20 @@ public class LaserGun_1 : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        Debug.Log("Shoot ne");
         projectile.SetActive(true);
         m_sr.sprite = shootSprite;
         yield return new WaitForSeconds(attackDelay / 2);
-        Debug.Log("Khong shoot ne");
         projectile.SetActive(false);
         m_sr.sprite = idleSprite;
+    }
+
+    void SetShoot(bool state)
+    {
+        m_canShoot = state;
+    }
+
+    bool GetShoot()
+    {
+        return m_canShoot;
     }
 }
