@@ -12,6 +12,7 @@ public class LaserGun_PeriodShoot : MonoBehaviour
     public Sprite shootSprite;
     public Sprite idleSprite;
     public float delayAfterAwake;
+    public float shootTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +42,7 @@ public class LaserGun_PeriodShoot : MonoBehaviour
     {
         projectile.SetActive(true);
         m_sr.sprite = shootSprite;
-        yield return new WaitForSeconds(attackDelay / 2);
+        yield return new WaitForSeconds(shootTime);
         projectile.SetActive(false);
         m_sr.sprite = idleSprite;
     }
