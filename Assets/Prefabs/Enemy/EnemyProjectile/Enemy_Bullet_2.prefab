@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   dmg: 100
-  shootingPower: 1
+  shootingPower: 7
   playerTransform: {fileID: 0}
 --- !u!212 &8134925423634497341
 SpriteRenderer:
