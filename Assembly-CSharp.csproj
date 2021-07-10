@@ -105,10 +105,11 @@
     <Compile Include="Assets\Scripts\Enemy\LaserGun\Swtich.cs" />
     <Compile Include="Assets\Scripts\Enemy\Ranger\Shooter_1.cs" />
     <Compile Include="Assets\Scripts\Enemy\Tanker\Tanker.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Drones\DroneGeneral.cs" />
     <Compile Include="Assets\Scripts\GrenadeTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerStatus.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\FirstState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Drones\DroneGeneral.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Drones\Route.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
