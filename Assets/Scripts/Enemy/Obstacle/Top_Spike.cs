@@ -22,10 +22,6 @@ public class Top_Spike : MonoBehaviour
         {
             m_rb.bodyType = RigidbodyType2D.Dynamic;
         }
-        //if (playerTransform.position.x == transform.position.x)
-        //{
-        //    m_rb.bodyType = RigidbodyType2D.Dynamic;
-        //}
     }
 
     private void OnCollisionEnter2D(Collision2D hitintro)

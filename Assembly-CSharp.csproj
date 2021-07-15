@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Enemy\Drones\Route.cs" />
     <Compile Include="Assets\Scripts\Engine\UIMenu.cs" />
     <Compile Include="Assets\Scripts\Enemy\Ranger\Bullet_2.cs" />
     <Compile Include="Assets\Scripts\Enemy\LaserGun\LaserLine.cs" />
@@ -78,7 +79,6 @@
     <Compile Include="Assets\Scripts\Enemy\LaserGun\LaserGun_PeriodShoot.cs" />
     <Compile Include="Assets\Scripts\Enemy\Drones\Drones.cs" />
     <Compile Include="Assets\Scripts\Player\AttackTrigger.cs" />
-    <Compile Include="Assets\death.cs" />
     <Compile Include="Assets\Scripts\Enemy\Ranger\Shooter_NoMove.cs" />
     <Compile Include="Assets\Scripts\Enemy\TriggerPoint\CameraControl.cs" />
     <Compile Include="Assets\Scripts\Enemy\Melee\Enemy_notFollow.cs" />
@@ -109,7 +109,6 @@
     <Compile Include="Assets\Scripts\GrenadeTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerStatus.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\FirstState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Drones\Route.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
