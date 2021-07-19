@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.4014611, y: -0.99681115}
+  m_Offset: {x: 2.9140499, y: -0.99681115}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3353541, y: 1.9870806}
+  m_Size: {x: 2.3605323, y: 1.9870806}
   m_EdgeRadius: 0
 --- !u!114 &1814640257379485651
 MonoBehaviour:
@@ -119,11 +119,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27df442b4b9bbd4cabef9147c3d66f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 5
   attackDamage: 20
   hitPoint: 100
-  attackRadius: 1.2
-  followRadius: 20
+  attackRadius: 0.8
+  followRadius: 15
   attackHeightRadius: 2
   trigger: {fileID: 8109654627146009922}
   playerTransform: {fileID: 5207967441306602811, guid: eaac258798e0f024c9a960d32925eca9, type: 3}
@@ -209,7 +209,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4887794515492085572}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7b00f3ec5ce72db449801d1d67eb3a2d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

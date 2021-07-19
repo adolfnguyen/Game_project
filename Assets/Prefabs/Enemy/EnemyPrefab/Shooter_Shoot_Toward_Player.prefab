@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1552805967527523893}
   - component: {fileID: 1552805967527523898}
   - component: {fileID: 1552805967527523899}
+  - component: {fileID: 1728071477}
   m_Layer: 10
   m_Name: Shooter_Shoot_Toward_Player
   m_TagString: Enemy
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1552805967527523896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20.85, y: -0.7403803, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 4753250970166369336}
   m_Father: {fileID: 0}
@@ -49,15 +50,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   attackDamage: 50
-  hitPoint: 500
-  attackRadius: 10
+  hitPoint: 300
+  attackRadius: 8.5
   enemyAnim: {fileID: 0}
   playerTransform: {fileID: 0}
-  attackDelay: 0.5
+  attackDelay: 0.6
   m_firePoint: {fileID: 4753250970166369336}
   projectile: {fileID: 3634283724209099369, guid: 8083946ba72549c4c895401b4b43d61d, type: 3}
-  shootingPower: 25
-  attackHeightRadius: 0
+  shootingPower: 300
+  attackHeightRadius: 5
 --- !u!212 &1552805967527523893
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -97,8 +98,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 720cbfb21e0300f4e92a734ca40388c5, type: 3}
+  m_SortingOrder: 11
+  m_Sprite: {fileID: 21300000, guid: 6586dd1d9544dda45bff84be01fb7247, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -143,19 +144,38 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.29820108, y: -0.62663126}
+  m_Offset: {x: -0.21620727, y: 0.5551102}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.42, y: 5}
+    oldSize: {x: 11.69, y: 12.94}
     newSize: {x: 6.42, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9313431, y: 2.1461844}
+  m_Size: {x: 4.1288886, y: 11.507076}
   m_EdgeRadius: 0
+--- !u!95 &1728071477
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552805967527523896}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2892166cca947204f954db39693ade4b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4753250970166369335
 GameObject:
   m_ObjectHideFlags: 0
