@@ -41,7 +41,7 @@ public class RobotShooting : MonoBehaviour
         else if(Input.GetKeyUp(KeyCode.X)) 
         {
             anim.SetBool("Shooting", false);
-            Debug.Log("check here");
+
             if (shot != null) StopCoroutine(shot);
         }      
     }
@@ -58,7 +58,6 @@ public class RobotShooting : MonoBehaviour
     IEnumerator Shoot()
     {
         Instantiate(bullet, firePoint.position, firePoint.rotation);
-        Debug.Log("case 2");
         anim.SetBool("Shooting", true);
         CoreGame.DecreaseBullet();
         EventManager.TriggerEvent(GameEvents.UPDATEBULLET);

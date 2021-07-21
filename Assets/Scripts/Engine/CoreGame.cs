@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class CoreGame : MonoBehaviour
@@ -10,6 +12,7 @@ public class CoreGame : MonoBehaviour
     private static int curheal = 1000;
     private static int grenade = 100;
     private static bool pause;
+    private static int level;
     // Start is called before the first frame update
     void Start()
     {
@@ -79,4 +82,5 @@ public class CoreGame : MonoBehaviour
     public static int Bullet { get => bullet; set => bullet = value; }
     public static int Grenade { get => grenade; set => grenade = value; }
     public static bool Pause { get => pause; set => pause = value; }
+    public static int Level { get => level; set => level = value; }
 }
