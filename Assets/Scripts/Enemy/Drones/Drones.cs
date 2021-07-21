@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Drones : Enemies
 {
-    //public int moveSpeed;
+    public int moveSpeed;
     public int attackDamage;
     public int hitPoint;
     public float timer;
@@ -13,9 +13,9 @@ public class Drones : Enemies
     [SerializeField] Animator enemyAnim;
     SpriteRenderer m_enemySR;
     Rigidbody2D m_rb;
+    private bool m_isDeath = false;
 
-    public Vector3 offset = new Vector3(0, 2.8f, 0);
-    public bool smoothFollow = true;
+    public Vector3 offset = new Vector3(0, 3f, 0);
 
     Vector2 movetoPos;
     bool beginMove = false;
@@ -28,6 +28,7 @@ public class Drones : Enemies
         m_enemySR = GetComponent<SpriteRenderer>();
         SetAttackDamage(attackDamage);
         SetHitPoint(hitPoint);
+        SetMoveSpeed(moveSpeed);
         m_rb = GetComponent<Rigidbody2D>();
     }
     //LateUpdate duoc goi moi frame, nhung sau Update
@@ -39,27 +40,26 @@ public class Drones : Enemies
         {
             StopFollowing();
             m_rb.bodyType = RigidbodyType2D.Dynamic;
+            if (!m_isDeath)
+                StartCoroutine(DeathAfter5s());
         }
         else
         {
-            if (smoothFollow)
+            timer -= Time.fixedDeltaTime;
+            distanceTemp = ((playerTransform.position + offset) - transform.position).sqrMagnitude;
+            if (beginMove)
             {
-                timer -= Time.fixedDeltaTime;
-                distanceTemp = ((playerTransform.position + offset) - transform.position).sqrMagnitude;
-                if (beginMove)
+                //movetoPos = Vector3.Lerp(movetoPos, playerTransform.position + offset, Time.fixedDeltaTime * 1.5f);
+                movetoPos = playerTransform.position + offset;
+                transform.position = Vector2.MoveTowards(transform.position, movetoPos, moveSpeed * Time.deltaTime);
+                if (distanceTemp < 0.05f * 0.05f)
                 {
-                    //Lerp noi suy ra 1 vector nam giua 2 vector duoc truyen vao
-                    movetoPos = Vector3.Lerp(movetoPos, playerTransform.position + offset, Time.fixedDeltaTime * 1.5f);
-                    transform.position = new Vector3(movetoPos.x, movetoPos.y, 0);
-                    if (distanceTemp < 0.05f * 0.05f)
-                    {
-                        beginMove = false;
-                    }
+                    beginMove = false;
                 }
-                else if (distanceTemp > 0.5f * 0.5f)
-                {
-                    beginMove = true;
-                }
+            }
+            else if (distanceTemp > 0.5f * 0.5f)
+            {
+                beginMove = true;
             }
             else
             {
@@ -72,4 +72,34 @@ public class Drones : Enemies
         beginMove = false;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (!m_isDeath)
+                StartCoroutine(Death());
+        }
+    }
+
+    IEnumerator Death()
+    {
+        m_isDeath = true;
+        enemyAnim.SetBool("DeathAnim", true);
+        yield return new WaitForSeconds(0.40f);
+        Destroy(transform.gameObject);
+    }
+
+    IEnumerator DeathAfter5s()
+    {
+        yield return new WaitForSeconds(5.0f);
+        m_isDeath = true;
+        enemyAnim.SetBool("DeathAnim", true);
+        yield return new WaitForSeconds(0.40f);
+        Destroy(transform.gameObject);
+    }
+
+    public void Damage(int dmg)
+    {
+        hitPoint -= dmg;
+    }
 }
