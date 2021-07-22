@@ -8,6 +8,7 @@ public class Shooter_1 : Enemies
     public int attackDamage;
     public int hitPoint;
     public float attackRadius;
+    public float attackHeightRadius;
     public GameObject projectile;
     [SerializeField] Animator enemyAnim;
     [SerializeField] Transform playerTransform;
@@ -31,6 +32,7 @@ public class Shooter_1 : Enemies
         SetAttackDamage(attackDamage);
         SetHitPoint(hitPoint);
         SetAttackRadius(attackRadius);
+        SetAttackHeightRadius(attackHeightRadius);
         SetAttackDelay(attackDelay);
         m_canShoot = true;
     }
@@ -87,7 +89,9 @@ public class Shooter_1 : Enemies
     IEnumerator EnemyShoot_L()
     {
         enemyAnim.SetBool("WalkAnim", false);
-        yield return new WaitForSeconds(attackDelay);
+        if (transform.eulerAngles == new Vector3(0, 0, 0))
+            yield return new WaitForSeconds(attackDelay*2);
+        else yield return new WaitForSeconds(attackDelay);
         transform.eulerAngles = new Vector3(0, 180, 0);
         Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
         enemyAnim.SetBool("AttackAnim", true);
@@ -99,7 +103,9 @@ public class Shooter_1 : Enemies
     IEnumerator EnemyShoot_R()
     {
         enemyAnim.SetBool("WalkAnim", false);
-        yield return new WaitForSeconds(attackDelay);
+        if (transform.eulerAngles == new Vector3(0, 180, 0))
+            yield return new WaitForSeconds(attackDelay*2);
+        else yield return new WaitForSeconds(attackDelay);
         transform.eulerAngles = new Vector3(0, 0, 0);
         Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
         enemyAnim.SetBool("AttackAnim", true);

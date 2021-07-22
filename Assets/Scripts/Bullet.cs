@@ -22,7 +22,6 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         Destroy(transform.gameObject, 1.5f);
         //aim.SetBool("Touching", touching);
     }

@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Engine\SpawnZombies.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemies.cs" />
     <Compile Include="Assets\Scripts\HealDrop.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Animal\Frog_JumpAround.cs" />
     <Compile Include="Assets\Scripts\Engine\ControllerInfomation.cs" />
     <Compile Include="Assets\Scripts\Enemy\Animal\Frog.cs" />
     <Compile Include="Assets\Scripts\Enemy\Obstacle\Top_Spike.cs" />
@@ -116,7 +117,9 @@
     <Compile Include="Assets\Scripts\GrenadeTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerStatus.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\FirstState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Animal\Frog_JumpAround.cs" />
+    <Compile Include="Assets\Scripts\Enemy\LaserGun\LaserGun_PressToShoot.cs" />
+    <Compile Include="Assets\Scripts\Enemy\LaserGun\Swtich_PressToShoot.cs" />
+    <Compile Include="Assets\Scripts\Enemy\LaserGun\LaserProjectile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

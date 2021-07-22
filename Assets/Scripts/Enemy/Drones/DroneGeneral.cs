@@ -6,10 +6,7 @@ public class DroneGeneral : Enemies
 {
     public int attackDamage;
     public int hitPoint;
-    public int moveSpeed;
     private bool m_isDeath;
-
-    public float distance;
 
     [SerializeField] Animator enemyAnim;
     SpriteRenderer m_enemySR;
@@ -21,6 +18,7 @@ public class DroneGeneral : Enemies
     private Vector2 m_myPos;
     public float speedModifier;
     private bool m_coroutineAllow;
+    private bool m_canShoot;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +27,6 @@ public class DroneGeneral : Enemies
         m_enemySR = GetComponent<SpriteRenderer>();
         SetAttackDamage(attackDamage);
         SetHitPoint(hitPoint);
-        SetMoveSpeed(moveSpeed);
         m_rb = GetComponent<Rigidbody2D>();
         m_isDeath = false;
 
@@ -41,22 +38,22 @@ public class DroneGeneral : Enemies
     // Update is called once per frame
     void Update()
     {
-        if (m_isDeath)
+        if (hitPoint <= 0)
         {
-            m_rb.bodyType = RigidbodyType2D.Dynamic;
+            if (!m_isDeath)
+            {
+                StartCoroutine(Bloom());
+            }
         }
         else
         {
-            //for (distance = 10; distance <= 0; distance -= GetMoveSpeed() * Time.deltaTime)
-            //{
-            //    Vector3 vec = new Vector3(GetMoveSpeed() * Time.deltaTime, 0f, 0f);
-            //    transform.position += vec;
-            //    //distance -= vec.x;
-            //}
-            //m_coroutineAllow = true;
             if (m_coroutineAllow)
             {
                 StartCoroutine(GoByTheRoute(m_routeToGo));
+            }
+            if (m_canShoot)
+            {
+                //StartCoroutine(Shoot());
             }
         }
     }
@@ -95,13 +92,6 @@ public class DroneGeneral : Enemies
 
     private void OnTriggerEnter2D(Collider2D hitintro)
     {
-        if (hitintro.CompareTag("Enemy"))
-        {
-            m_rb.bodyType = RigidbodyType2D.Static;
-            hitintro.SendMessageUpwards("Damage", attackDamage);
-            if (m_isDeath == false)
-                StartCoroutine(Bloom());
-        }
         if (hitintro.CompareTag("Ground"))
         {
             m_rb.bodyType = RigidbodyType2D.Static;
@@ -124,4 +114,12 @@ public class DroneGeneral : Enemies
         yield return new WaitForSeconds(0.40f);
         Destroy(transform.gameObject);
     }
+
+    //IEnumerator Shoot()
+    //{
+    //    m_canShoot = false;
+    //    Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
+    //    yield return new WaitForSeconds(attackDelay);
+    //    m_canShoot = true;
+    //}
 }
