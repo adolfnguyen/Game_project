@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public bool bendown = false;
     private bool m_isInvincible = false;
     private bool death;
+    private bool takedamage;
     [SerializeField] private float invincibilityDurationSeconds;
     [SerializeField] private float invincibilityDeltaTime;
     private SpriteRenderer m_spriteRenderer;
@@ -32,6 +33,10 @@ public class Player : MonoBehaviour
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         secondCollider.enabled = false;
         CoreGame.CurHeal = CoreGame.Heal;
+    }
+    private void FixedUpdate()
+    {
+       
     }
     void Start()
     {
@@ -68,24 +73,26 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            if (!bendown)
+            if (!bendown&& !takedamage)
             {
                 rigidbody.velocity = new Vector2(5.0f, rigidbody.velocity.y);
+                
             }
-
+            
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
 
-            if (!bendown)
+            if (!bendown && !takedamage)
             {
                 rigidbody.velocity = new Vector2(-5.0f, rigidbody.velocity.y);
             }
+           
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
         // && m_ground
-        if (Input.GetKeyDown(KeyCode.UpArrow) && rigidbody.velocity.y == 0)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && m_ground)
         {
             if (!bendown)
             {
@@ -118,7 +125,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log(" cham dat");
             aim.SetBool("IsJumping", false);
-            //m_ground = true;
+            m_ground = true;
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -140,16 +147,22 @@ public class Player : MonoBehaviour
         {
             transform.parent = null;
         }
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            m_ground = false;
+        }
     }
 
     public void Damage(int dmg)
     {
         if (m_isInvincible) return;
         CoreGame.CurHeal -= dmg;
+        rigidbody.velocity = Vector2.zero;
+        takedamage = true;
         Debug.Log("nhận sát thương");
         if (transform.eulerAngles == new Vector3(0, 0, 0))
         {
-            rigidbody.velocity = new Vector2(-10f, 5f);
+            rigidbody.AddForce(Vector2.right * -50 + Vector2.up * 20);
         }
         else { rigidbody.velocity = new Vector2(10f, 5f); }
         
@@ -159,8 +172,13 @@ public class Player : MonoBehaviour
 
             return;
         }
-
+        StartCoroutine(SetTakeDamage());
         StartCoroutine(BecomeTemporarilyInvincible());
+    }
+    private IEnumerator SetTakeDamage()
+    {
+        yield return new WaitForSeconds(0.5f);
+        takedamage = false;
     }
     private IEnumerator BecomeTemporarilyInvincible()
     {
