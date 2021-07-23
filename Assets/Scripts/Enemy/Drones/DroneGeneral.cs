@@ -9,6 +9,8 @@ public class DroneGeneral : Enemies
     private bool m_isDeath;
 
     [SerializeField] Animator enemyAnim;
+    [SerializeField] Transform firePoint;
+    [SerializeField] Transform playerTransform;
     SpriteRenderer m_enemySR;
     Rigidbody2D m_rb;
 
@@ -18,12 +20,16 @@ public class DroneGeneral : Enemies
     private Vector2 m_myPos;
     public float speedModifier;
     private bool m_coroutineAllow;
-    private bool m_canShoot;
+    public GameObject projectile;
+    public int fireRate;
+    public float attackDelay;
+    private bool m_canAttack;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyAnim = gameObject.GetComponent<Animator>();
+        playerTransform = FindObjectOfType<Player>().GetComponent<Transform>();
         m_enemySR = GetComponent<SpriteRenderer>();
         SetAttackDamage(attackDamage);
         SetHitPoint(hitPoint);
@@ -33,6 +39,7 @@ public class DroneGeneral : Enemies
         m_routeToGo = 0;
         m_tParam = 0f;
         m_coroutineAllow = true;
+        m_canAttack = true;
     }
 
     // Update is called once per frame
@@ -51,9 +58,13 @@ public class DroneGeneral : Enemies
             {
                 StartCoroutine(GoByTheRoute(m_routeToGo));
             }
-            if (m_canShoot)
+            if (Mathf.Abs(playerTransform.position.x - transform.position.x) < 1)
             {
-                //StartCoroutine(Shoot());
+                Debug.Log("hehe");
+                if (Random.Range(1, fireRate) == 1 && m_canAttack)
+                {
+                    StartCoroutine(Shoot());
+                }
             }
         }
     }
@@ -115,11 +126,11 @@ public class DroneGeneral : Enemies
         Destroy(transform.gameObject);
     }
 
-    //IEnumerator Shoot()
-    //{
-    //    m_canShoot = false;
-    //    Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
-    //    yield return new WaitForSeconds(attackDelay);
-    //    m_canShoot = true;
-    //}
+    IEnumerator Shoot()
+    {
+        m_canAttack = false;
+        Instantiate(projectile, firePoint.position, firePoint.rotation);
+        yield return new WaitForSeconds(attackDelay);
+        m_canAttack = true;
+    }
 }

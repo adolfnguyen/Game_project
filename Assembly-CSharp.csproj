@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Engine\ControllerInfomation.cs" />
     <Compile Include="Assets\Scripts\Enemy\Animal\Frog.cs" />
     <Compile Include="Assets\Scripts\Enemy\Obstacle\Top_Spike.cs" />
+    <Compile Include="Assets\Scripts\Enemy\LaserGun\Swtich_PressToShoot.cs" />
     <Compile Include="Assets\Scripts\Scene\InputText.cs" />
     <Compile Include="Assets\Scripts\Enemy\Ranger\Shooter_Follow.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Scripts\Enemy\Drones\Drones.cs" />
     <Compile Include="Assets\Scripts\Player\AttackTrigger.cs" />
     <Compile Include="Assets\Scripts\Enemy\Ranger\Shooter_NoMove.cs" />
+    <Compile Include="Assets\Scripts\Enemy\LaserGun\LaserGun_PressToShoot.cs" />
     <Compile Include="Assets\Scripts\Enemy\TriggerPoint\CameraControl.cs" />
     <Compile Include="Assets\Scripts\Enemy\Melee\Enemy_notFollow.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="Assets\Scripts\Engine\GameEvents.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Enemy\Obstacle\Fish.cs" />
+    <Compile Include="Assets\Scripts\Enemy\LaserGun\LaserProjectile.cs" />
     <Compile Include="Assets\Scripts\Enemy\Melee\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\SecondState.cs" />
@@ -117,9 +120,7 @@
     <Compile Include="Assets\Scripts\GrenadeTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerStatus.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\FirstState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\LaserGun\LaserGun_PressToShoot.cs" />
-    <Compile Include="Assets\Scripts\Enemy\LaserGun\Swtich_PressToShoot.cs" />
-    <Compile Include="Assets\Scripts\Enemy\LaserGun\LaserProjectile.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Drones\DronesProjectile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
