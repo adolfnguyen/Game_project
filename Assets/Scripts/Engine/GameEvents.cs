@@ -10,4 +10,5 @@ public class GameEvents
     public const string STATECLEAR = "STATE CLEAR";
     public const string UPDATEHEAL = "upadate heal";
     public const string UPDATEGRENADE = "UPDATE GRENADE";
+    public const string SCENCETRANSITION = "SCENCE TRANSITION";
 }

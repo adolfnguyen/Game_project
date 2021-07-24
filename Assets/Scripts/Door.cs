@@ -23,7 +23,7 @@ public class Door : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene(leveLoad);
+            EventManager.TriggerEvent<int>(GameEvents.SCENCETRANSITION,1);
             CoreGame.Level++;
         }
     }
