@@ -40,6 +40,7 @@ public class FirstState : State<AI>
 
     public override void UpdateState(AI own)
     {
+
         if (own.switchState)
         {
             own.stateMachine.ChangeState(SecondState.Instance);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class OneWay_Platform : MonoBehaviour
 {
     public PlatformEffector2D effector;
-    public float waitTime;
+    public float waitTime = 0.3f;
     private bool m_enable;
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,7 @@ public class OneWay_Platform : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
-            waitTime = 0.75f;
+            waitTime = 0.3f;
             effector.rotationalOffset = 0f;
         }
         if (m_enable)

@@ -6,8 +6,9 @@ public class CameraControl : MonoBehaviour
 {
     Camera cam;
     Vector2 m_velo;
-    Vector3 m_desirePos = new Vector3(51.48f, 12.44f, -10f);
-    bool hehe = false;
+    public Vector3 desirePos = new Vector3(51.48f, 12.44f, -10f);
+    public float camSize;
+    bool active = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class CameraControl : MonoBehaviour
     }
     private void Update()
     {
-        if (hehe)
+        if (active)
         {
             StartCoroutine(MovetoPos());
         }
@@ -25,15 +26,15 @@ public class CameraControl : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            //StartCoroutine(MovetoPos());
-            hehe = true;
+            active = true;
         }
     }
     IEnumerator MovetoPos()
     {        
-        float posx = Mathf.SmoothDamp(cam.transform.position.x, 51.48f, ref m_velo.x, 2.0f);
-        float posy = Mathf.SmoothDamp(cam.transform.position.y, 12.44f, ref m_velo.y, 2.0f);
+        float posx = Mathf.SmoothDamp(cam.transform.position.x, desirePos.x, ref m_velo.x, 2.0f);
+        float posy = Mathf.SmoothDamp(cam.transform.position.y, desirePos.y, ref m_velo.y, 2.0f);
         cam.transform.position = new Vector3(posx, posy, transform.position.z);
+        if (cam.orthographicSize < camSize) cam.orthographicSize += Time.deltaTime;
         yield return new WaitForSeconds(0.1f);
         cam.GetComponent<Camerafollow>().SetActiveState(false);
     }
