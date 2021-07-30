@@ -6,8 +6,13 @@ using StateStuff;
 public class AI : MonoBehaviour
 {
     public bool switchState = false;
-    public float gameTimer;
-    public int seconds = 0;
+    private float gameTimer;
+    private int seconds = 0;
+
+    public float moveSpeed;
+    public float hitPoint;
+    public float attackDamage;
+    public Transform playerTransform;
 
     public StateMachine<AI> stateMachine { get; set; }
 
@@ -16,6 +21,7 @@ public class AI : MonoBehaviour
         stateMachine = new StateMachine<AI>(this);
         stateMachine.ChangeState(FirstState.Instance);
         gameTimer = Time.time;
+        playerTransform = FindObjectOfType<Player>().GetComponent<Transform>();
     }
 
     private void Update()
@@ -32,5 +38,10 @@ public class AI : MonoBehaviour
             switchState = !switchState;
         }
         stateMachine.Update();
+    }
+
+    public void Damage(int dmg)
+    {
+        hitPoint -= dmg;
     }
 }

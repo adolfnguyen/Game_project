@@ -40,7 +40,7 @@ public class SecondState : State<AI>
 
     public override void UpdateState(AI own)
     {
-
+        //own.transform.position += new Vector3(Time.deltaTime, 0f, 0f);
         if (!own.switchState)
         {
             own.stateMachine.ChangeState(FirstState.Instance);
