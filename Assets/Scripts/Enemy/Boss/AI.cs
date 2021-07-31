@@ -13,6 +13,7 @@ public class AI : MonoBehaviour
     public float hitPoint;
     public float attackDamage;
     public Transform playerTransform;
+    public Animator anim;
 
     public StateMachine<AI> stateMachine { get; set; }
 
@@ -22,6 +23,7 @@ public class AI : MonoBehaviour
         stateMachine.ChangeState(FirstState.Instance);
         gameTimer = Time.time;
         playerTransform = FindObjectOfType<Player>().GetComponent<Transform>();
+        anim = gameObject.GetComponent<Animator>();
     }
 
     private void Update()

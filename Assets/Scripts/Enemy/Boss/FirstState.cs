@@ -40,7 +40,13 @@ public class FirstState : State<AI>
 
     public override void UpdateState(AI own)
     {
-        //own.transform.position += new Vector3(Time.deltaTime, 0f, 0f);
+        //Standby State
+        own.anim.SetBool("IdleAnim", true);
+        own.anim.SetBool("AttackAnim", false);
+        own.anim.SetBool("WalkAnim", false);
+        own.anim.SetBool("KickAnim", false);
+        own.anim.SetBool("DeathAnim", false);
+        own.anim.SetBool("JumpAnim", false);
         if (own.switchState)
         {
             own.stateMachine.ChangeState(SecondState.Instance);

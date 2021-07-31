@@ -647,8 +647,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 408132544, guid: 819226e286cdec44c8bc084d06d12fc4, type: 3}
+      propertyPath: hitPoint
+      value: 7500
+      objectReference: {fileID: 0}
+    - target: {fileID: 408132544, guid: 819226e286cdec44c8bc084d06d12fc4, type: 3}
       propertyPath: moveSpeed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 408132544, guid: 819226e286cdec44c8bc084d06d12fc4, type: 3}
+      propertyPath: attackDamage
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7566022994505128741, guid: 819226e286cdec44c8bc084d06d12fc4, type: 3}
       propertyPath: m_RootOrder
@@ -656,11 +664,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7566022994505128741, guid: 819226e286cdec44c8bc084d06d12fc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 67.34
+      value: 67.61
       objectReference: {fileID: 0}
     - target: {fileID: 7566022994505128741, guid: 819226e286cdec44c8bc084d06d12fc4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.79
+      value: -4.19
       objectReference: {fileID: 0}
     - target: {fileID: 7566022994505128741, guid: 819226e286cdec44c8bc084d06d12fc4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1296,7 +1304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5207967441306602811, guid: eaac258798e0f024c9a960d32925eca9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.05
+      value: 54.04
       objectReference: {fileID: 0}
     - target: {fileID: 5207967441306602811, guid: eaac258798e0f024c9a960d32925eca9, type: 3}
       propertyPath: m_LocalPosition.y
