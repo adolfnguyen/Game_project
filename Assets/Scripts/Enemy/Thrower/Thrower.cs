@@ -79,8 +79,8 @@ public class Thrower : Enemies
     IEnumerator AttackDelay()
     {
         yield return new WaitForSeconds(0.37f);
+        projectile.GetComponent<ThrowerProjectile>().f = Vector2.left * throwForce;
         Instantiate(projectile, firePoint.position, Quaternion.identity);
-        projectile.GetComponent<Rigidbody2D>().AddForce(Vector2.left * throwForce);
         yield return new WaitForSeconds(0.27f);
         enemyAnim.SetBool("AttackAnim", false);
         yield return new WaitForSeconds(attackDelay - 0.57f);

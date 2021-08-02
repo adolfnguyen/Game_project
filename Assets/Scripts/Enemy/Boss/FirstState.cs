@@ -6,6 +6,7 @@ using StateStuff;
 public class FirstState : State<AI>
 {
     private static FirstState m_instance;
+    private Camera cam;
 
     private FirstState()
     {
@@ -31,6 +32,7 @@ public class FirstState : State<AI>
     public override void EnterState(AI own)
     {
         Debug.Log("Enter state 1");
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     public override void ExitState(AI own)
@@ -40,16 +42,27 @@ public class FirstState : State<AI>
 
     public override void UpdateState(AI own)
     {
-        //Standby State
-        own.anim.SetBool("IdleAnim", true);
-        own.anim.SetBool("AttackAnim", false);
-        own.anim.SetBool("WalkAnim", false);
-        own.anim.SetBool("KickAnim", false);
-        own.anim.SetBool("DeathAnim", false);
-        own.anim.SetBool("JumpAnim", false);
+        //Appearance
+        own.rb.velocity = Vector2.down * own.moveSpeed * 10;
+        own.StartCoroutine(own.cameraShake.Shake(1.0f));
+        own.seconds = 0;
+        own.switchState = 2;   
+
         if (own.switchState == 2)
         {
             own.stateMachine.ChangeState(SecondState.Instance);
+        }
+        if (own.switchState == 3)
+        {
+            own.stateMachine.ChangeState(ThirdState.Instance);
+        }
+        if (own.switchState == 4)
+        {
+            own.stateMachine.ChangeState(FourthState.Instance);
+        }
+        if (own.switchState == 5)
+        {
+            own.stateMachine.ChangeState(FifthState.Instance);
         }
     }
 }

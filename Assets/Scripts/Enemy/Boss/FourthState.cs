@@ -8,7 +8,7 @@ public class FourthState : State<AI>
     private static FourthState m_instance;
     Vector3 currentPos;
     Vector2 moveToPos;
-    Vector3 offset = new Vector3(2.5f, 2f, 0f);
+    Vector3 offset = new Vector3(2f, 1.85f, 0f);
     private int m_moveState;
 
     private FourthState()
@@ -35,14 +35,9 @@ public class FourthState : State<AI>
     public override void EnterState(AI own)
     {
         Debug.Log("Enter state 4");
+        own.seconds = 0;
         currentPos = own.transform.position;
         m_moveState = 1;
-
-        own.anim.SetBool("AttackAnim", false);
-        own.anim.SetBool("WalkAnim", false);
-        own.anim.SetBool("KickAnim", false);
-        own.anim.SetBool("DeathAnim", false);
-        own.anim.SetBool("JumpAnim", false);
     }
 
     public override void ExitState(AI own)
@@ -57,7 +52,7 @@ public class FourthState : State<AI>
         {
             own.rb.bodyType = RigidbodyType2D.Kinematic;
             moveToPos = own.playerTransform.position + offset;
-            own.transform.position = Vector2.MoveTowards(own.transform.position, moveToPos, own.moveSpeed * 8 * Time.deltaTime);
+            own.transform.position = Vector2.MoveTowards(own.transform.position, moveToPos, own.moveSpeed * 10 * Time.deltaTime);
             if (own.transform.position.x == moveToPos.x && own.transform.position.y == moveToPos.y) m_moveState = 2;
         }
         if (m_moveState == 2)
@@ -67,7 +62,21 @@ public class FourthState : State<AI>
         }
         if (m_moveState == 3)
         {
-            own.transform.position = Vector2.MoveTowards(own.transform.position, currentPos, own.moveSpeed * 8 * Time.deltaTime);
+            own.transform.position = Vector2.MoveTowards(own.transform.position, currentPos, own.moveSpeed * 10 * Time.deltaTime);
+            if (own.transform.position == currentPos)
+            {
+                own.switchState++;
+                own.seconds = 0;
+                own.SetKick(true);
+            }
+        }
+        if (own.switchState == 2)
+        {
+            own.stateMachine.ChangeState(SecondState.Instance);
+        }
+        if (own.switchState == 3)
+        {
+            own.stateMachine.ChangeState(ThirdState.Instance);
         }
         if (own.switchState == 5)
         {
@@ -79,7 +88,7 @@ public class FourthState : State<AI>
     {
         own.anim.SetBool("KickAnim", true);
         own.trigger.enabled = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         m_moveState = 3;
         own.anim.SetBool("KickAnim", false);
         own.trigger.enabled = false;

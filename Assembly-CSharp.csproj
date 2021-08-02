@@ -63,7 +63,6 @@
     <Compile Include="Assets\Scripts\Engine\UIMenu.cs" />
     <Compile Include="Assets\Scripts\Enemy\Ranger\Bullet_2.cs" />
     <Compile Include="Assets\Scripts\Enemy\LaserGun\LaserLine.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Boss\Nothing.cs" />
     <Compile Include="Assets\Scripts\Engine\SpawnZombies.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemies.cs" />
     <Compile Include="Assets\Scripts\HealDrop.cs" />
@@ -81,6 +80,7 @@
     <Compile Include="Assets\Scripts\Grenade.cs" />
     <Compile Include="Assets\Scripts\Player\Throwing.cs" />
     <Compile Include="Assets\Scripts\Enemy\Obstacle\Mine.cs" />
+    <Compile Include="Assets\Scripts\Engine\CameraShake.cs" />
     <Compile Include="Assets\Scripts\Enemy\Thrower\Thrower.cs" />
     <Compile Include="Assets\Scripts\Engine\CoreGame.cs" />
     <Compile Include="Assets\Scripts\Enemy\TriggerPoint\SpawnScript.cs" />
@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\Engine\SingletonMonobehaviour.cs" />
     <Compile Include="Assets\Scripts\SomethingElse\OneWay_Platform.cs" />
     <Compile Include="Assets\Scripts\Engine\EventManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\BossProjectile.cs" />
     <Compile Include="Assets\Scripts\Engine\WriteLevelInfo.cs" />
     <Compile Include="Assets\Scripts\RobotShooting.cs" />
     <Compile Include="Assets\Scripts\Enemy\Obstacle\Bottom_Spike.cs" />
@@ -126,7 +127,9 @@
     <Compile Include="Assets\Scripts\Enemy\Boss\ThirdState.cs" />
     <Compile Include="Assets\Scripts\PlayerStatus.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\FirstState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Boss\BossProjectile.cs" />
+    <Compile Include="Assets\Scripts\SomethingElse\InviWallControl.cs" />
+    <Compile Include="Assets\Scripts\SomethingElse\BossStageControl.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\SixthState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

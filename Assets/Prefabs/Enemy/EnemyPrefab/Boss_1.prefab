@@ -107,7 +107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7566022994505128741
 Transform:
   m_ObjectHideFlags: 0
@@ -137,9 +137,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchState: 0
+  seconds: 0
   moveSpeed: 3
   hitPoint: 7500
-  attackDamage: 100
+  originalHitPoint: 0
+  attackDamage: 150
   playerTransform: {fileID: 0}
   anim: {fileID: 0}
   rb: {fileID: 0}
@@ -147,7 +149,9 @@ MonoBehaviour:
   m_firePoint: {fileID: 498360647}
   canShoot: 1
   projectile: {fileID: 6304962397769326034, guid: 3c75790cb2aa7964fb14cc483b3d6bf3, type: 3}
+  throwable: {fileID: 6971550835769247074, guid: c3e38853a37ef0449919e4338816d849, type: 3}
   trigger: {fileID: 979203849}
+  cameraShake: {fileID: 0}
 --- !u!61 &813473157
 BoxCollider2D:
   m_ObjectHideFlags: 0
