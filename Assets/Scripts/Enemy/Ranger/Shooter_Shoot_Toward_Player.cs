@@ -17,7 +17,6 @@ public class Shooter_Shoot_Toward_Player : Enemies
     private bool m_canShoot;
     public GameObject projectile;
     private bool m_isDeath = false;
-    public float shootingPower;
     public float attackHeightRadius;
 
     // Start is called before the first frame update

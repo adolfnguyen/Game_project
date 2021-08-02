@@ -30,7 +30,7 @@ public class SecondState : State<AI>
 
     public override void EnterState(AI own)
     {
-
+        Debug.Log("Enter state 2");
     }
 
     public override void ExitState(AI own)
@@ -40,10 +40,11 @@ public class SecondState : State<AI>
 
     public override void UpdateState(AI own)
     {
-        //if ( )
-        if (!own.switchState)
+        //Jump State
+
+        if (own.switchState == 3)
         {
-            own.stateMachine.ChangeState(FirstState.Instance);
+            own.stateMachine.ChangeState(ThirdState.Instance);
         }
     }
 }

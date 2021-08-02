@@ -30,7 +30,7 @@ public class FirstState : State<AI>
 
     public override void EnterState(AI own)
     {
-        
+        Debug.Log("Enter state 1");
     }
 
     public override void ExitState(AI own)
@@ -47,7 +47,7 @@ public class FirstState : State<AI>
         own.anim.SetBool("KickAnim", false);
         own.anim.SetBool("DeathAnim", false);
         own.anim.SetBool("JumpAnim", false);
-        if (own.switchState)
+        if (own.switchState == 2)
         {
             own.stateMachine.ChangeState(SecondState.Instance);
         }

@@ -5,7 +5,7 @@ using StateStuff;
 
 public class AI : MonoBehaviour
 {
-    public bool switchState = false;
+    public float switchState;
     private float gameTimer;
     private int seconds = 0;
 
@@ -14,6 +14,12 @@ public class AI : MonoBehaviour
     public float attackDamage;
     public Transform playerTransform;
     public Animator anim;
+    public Rigidbody2D rb;
+    public float attackDelay;
+    [SerializeField] Transform m_firePoint;
+    public bool canShoot = true;
+    public GameObject projectile;
+    public Collider2D trigger;
 
     public StateMachine<AI> stateMachine { get; set; }
 
@@ -24,6 +30,8 @@ public class AI : MonoBehaviour
         gameTimer = Time.time;
         playerTransform = FindObjectOfType<Player>().GetComponent<Transform>();
         anim = gameObject.GetComponent<Animator>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        trigger.enabled = false;
     }
 
     private void Update()
@@ -37,7 +45,8 @@ public class AI : MonoBehaviour
         if (seconds == 5)
         {
             seconds = 0;
-            switchState = !switchState;
+            switchState++;
+            if (switchState == 6) switchState = 1;
         }
         stateMachine.Update();
     }
@@ -45,5 +54,12 @@ public class AI : MonoBehaviour
     public void Damage(int dmg)
     {
         hitPoint -= dmg;
+    }
+
+    public void InstantiateProjectile()
+    {
+        Vector3 dir = playerTransform.position - m_firePoint.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        Instantiate(projectile, m_firePoint.position, Quaternion.AngleAxis(angle, Vector3.forward));
     }
 }

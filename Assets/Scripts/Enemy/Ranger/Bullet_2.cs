@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet_2 : MonoBehaviour
 {
-    public float speed;
     public int dmg;
     Rigidbody2D bl;
     public float shootingPower;

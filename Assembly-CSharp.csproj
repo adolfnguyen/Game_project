@@ -95,10 +95,12 @@
     <Compile Include="Assets\Scripts\Scene\Home.cs" />
     <Compile Include="Assets\Scripts\Enemy\Thrower\ThrowerProjectile.cs" />
     <Compile Include="Assets\Scripts\Engine\SingletonMonobehaviour.cs" />
+    <Compile Include="Assets\Scripts\SomethingElse\OneWay_Platform.cs" />
     <Compile Include="Assets\Scripts\Engine\EventManager.cs" />
     <Compile Include="Assets\Scripts\Engine\WriteLevelInfo.cs" />
     <Compile Include="Assets\Scripts\RobotShooting.cs" />
     <Compile Include="Assets\Scripts\Enemy\Obstacle\Bottom_Spike.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\FifthState.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnenmyAttackTrigger.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\StateMachine.cs" />
     <Compile Include="Assets\Scripts\Enemy\Melee\RunAround.cs" />
@@ -112,6 +114,7 @@
     <Compile Include="Assets\Scripts\Enemy\Melee\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\SecondState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\FourthState.cs" />
     <Compile Include="Assets\Scripts\Engine\UIManager.cs" />
     <Compile Include="Assets\Scripts\BulletDrop.cs" />
     <Compile Include="Assets\Scripts\Engine\Camerafollow.cs" />
@@ -120,9 +123,10 @@
     <Compile Include="Assets\Scripts\Enemy\Tanker\Tanker.cs" />
     <Compile Include="Assets\Scripts\Enemy\Drones\DroneGeneral.cs" />
     <Compile Include="Assets\Scripts\GrenadeTrigger.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\ThirdState.cs" />
     <Compile Include="Assets\Scripts\PlayerStatus.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\FirstState.cs" />
-    <Compile Include="Assets\Scripts\SomethingElse\OneWay_Platform.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\BossProjectile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
