@@ -185,7 +185,8 @@ MonoBehaviour:
   enemyAnim: {fileID: 0}
   attackHeightRadius: 10
   projectile: {fileID: 6971550835769247074, guid: c3e38853a37ef0449919e4338816d849, type: 3}
-  throwForce: 50
+  throwForce: 3
+  firePoint: {fileID: 0}
 --- !u!95 &722167699
 Animator:
   serializedVersion: 3

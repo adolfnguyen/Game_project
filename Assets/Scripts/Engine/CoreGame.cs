@@ -8,11 +8,14 @@ public class CoreGame : MonoBehaviour
 {
     private static int state = 0;
     private static int heal = 1000;
-    private static int bullet = 100;
+    private static int bullet = 30;
     private static int curheal = 1000;
-    private static int grenade = 100;
+    private static int grenade = 3;
     private static bool pause;
     private static int level;
+    private static bool soundOn;
+    private static bool musicOn;
+    private static string curMusic;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,4 +86,7 @@ public class CoreGame : MonoBehaviour
     public static int Grenade { get => grenade; set => grenade = value; }
     public static bool Pause { get => pause; set => pause = value; }
     public static int Level { get => level; set => level = value; }
+    public static bool SoundOn { get => soundOn; set => soundOn = value; }
+    public static bool MusicOn { get => musicOn; set => musicOn = value; }
+    public static string CurMusic { get => curMusic; set => curMusic = value; }
 }

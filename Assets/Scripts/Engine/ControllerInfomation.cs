@@ -43,4 +43,17 @@ public class ControllerInfomation : MonoBehaviour
         string jsonWrite = JsonUtility.ToJson(game);
         File.WriteAllText(path, jsonWrite);
     }
+    public void UpadateSoundStatus(bool sound, bool music)
+    {
+        if (File.Exists(Application.persistentDataPath + "/StoryInfo.txt"))
+        {
+            string json = File.ReadAllText(Application.persistentDataPath + "/StoryInfo.txt");
+            game = JsonUtility.FromJson<gameInfor>(json);
+        }
+        game.musicOn = CoreGame.MusicOn;
+        game.soundOn = CoreGame.SoundOn;
+        string path = Application.persistentDataPath + "/StoryInfo.txt";
+        string jsonWrite = JsonUtility.ToJson(game);
+        File.WriteAllText(path, jsonWrite);
+    }
 }

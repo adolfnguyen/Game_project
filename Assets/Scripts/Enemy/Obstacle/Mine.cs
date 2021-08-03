@@ -19,18 +19,25 @@ public class Mine : MonoBehaviour
         {
             hitintro.SendMessageUpwards("Damage", dmg);
             if (m_isBloom == false)
+            {
+                SoundManager.instance.SetAudio(NameSounds.dynamiteDetonated, false, true);
                 StartCoroutine(Bloom());
+            }         
         }
         if (hitintro.CompareTag("Player"))
         {
             hitintro.SendMessageUpwards("Damage", dmg);
             if (m_isBloom == false)
+            {
+                SoundManager.instance.SetAudio(NameSounds.dynamiteDetonated, false, true);
                 StartCoroutine(Bloom());
+            }
         }
     }
 
     IEnumerator Bloom()
     {
+        SoundManager.instance.SetAudio(NameSounds.dynamiteExploreEnemy, false, true);
         m_isBloom = true;
         mineAnim.SetBool("BloomAnim", true);
         yield return new WaitForSeconds(0.40f);

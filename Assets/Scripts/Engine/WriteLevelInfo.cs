@@ -99,6 +99,8 @@ public static class JsonHelper {
 public class gameInfor
 {
     public int level;
+    public bool soundOn;
+    public bool musicOn;
 }
 
 

@@ -12,7 +12,6 @@ public class UIManager : MonoBehaviour
     public GameObject stateClaerPanel;
     public Text Bullet;
     public Text Greande;
-    public Text inputText;
     public Slider Heal;
     // Start is called before the first frame update
     void Start()
@@ -38,11 +37,15 @@ public class UIManager : MonoBehaviour
         if (pause)
         {
             pausePanel.SetActive(true);
+            pausePanel.transform.GetChild(3).gameObject.SetActive(true);
+            pausePanel.transform.GetChild(4).gameObject.SetActive(true);
             Time.timeScale = 0f;
         }
         if (pause == false)
         {
             pausePanel.SetActive(false);
+            pausePanel.transform.GetChild(3).gameObject.SetActive(false);
+            pausePanel.transform.GetChild(4).gameObject.SetActive(false);
             Time.timeScale = 1f;
         }
     }
@@ -69,6 +72,8 @@ public class UIManager : MonoBehaviour
         if (gameOverPanel)
         {
             gameOverPanel.SetActive(true);
+            SoundManager.instance.SetMusic(CoreGame.CurMusic, false, false);
+            SoundManager.instance.SetMusic(NameMusic.DeathMusic, true, true);
             pause = false;
         }
     }
@@ -86,6 +91,6 @@ public class UIManager : MonoBehaviour
     }
     public void Back()
     {
-        SceneManager.LoadScene(0);
+        EventManager.TriggerEvent<int>(GameEvents.SCENCETRANSITION, 0);
     }
 }
