@@ -44,7 +44,6 @@ public class FirstState : State<AI>
     {
         //Appearance
         own.rb.velocity = Vector2.down * own.moveSpeed * 10;
-        own.StartCoroutine(own.cameraShake.Shake(1.0f));
         own.seconds = 0;
         own.switchState = 2;   
 

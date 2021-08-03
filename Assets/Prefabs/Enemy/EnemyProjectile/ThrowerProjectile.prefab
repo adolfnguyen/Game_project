@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  dmg: 100
+  dmg: 200
   mineAnim: {fileID: 0}
   f: {x: 0, y: 0}
 --- !u!212 &501728553445378911

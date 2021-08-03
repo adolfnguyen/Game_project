@@ -21,8 +21,10 @@ public class AI : MonoBehaviour
     public GameObject projectile;
     public GameObject throwable;
     public Collider2D trigger;
-    public CameraShake cameraShake;
+
     private bool m_canKick = true;
+
+    private bool m_isDeath = false;
 
     public StateMachine<AI> stateMachine { get; set; }
 
@@ -36,64 +38,80 @@ public class AI : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         trigger.enabled = false;
-        cameraShake = FindObjectOfType<Camera>().GetComponent<CameraShake>();
     }
 
     private void Update()
     {
-        if (hitPoint > originalHitPoint / 2)
+        if (hitPoint <= 0)
         {
-            if (Time.time > gameTimer + 1)
-            {
-                gameTimer = Time.time;
-                seconds++;
-            }
-
-            if (seconds == 5)
-            {
-                seconds = 0;
-                switchState++;
-                if (switchState == 6) switchState = 2;
-            }
-
-            if (Mathf.Abs(transform.position.x - playerTransform.position.x) < 8.0f && m_canKick)
-            {
-                switchState = 4;
-                m_canKick = false;
-            }
-
-            if (playerTransform.position.y >= 1.474131f)
-            {
-                switchState = 5;
-                seconds = 0;
-            }
+            if (m_isDeath == false)
+                StartCoroutine(Death());
         }
         else
         {
-            if (Time.time > gameTimer + 1)
+            if (hitPoint > originalHitPoint / 3)
             {
-                gameTimer = Time.time;
-                seconds++;
-            }
+                if (Time.time > gameTimer + 1)
+                {
+                    gameTimer = Time.time;
+                    seconds++;
+                }
 
-            if (seconds == 3)
-            {
-                seconds = 0;
-                if (switchState == 3)
+                if (seconds == 5)
                 {
-                    switchState = 6;
+                    seconds = 0;
+                    switchState++;
+                    if (switchState == 6) switchState = 2;
                 }
-                if (switchState == 6)
+
+                if (Mathf.Abs(transform.position.x - playerTransform.position.x) < 8.0f && m_canKick)
                 {
-                    switchState = 2;
+                    switchState = 4;
+                    m_canKick = false;
                 }
-                if (switchState == 2)
+
+                if (playerTransform.position.y >= 1.474131f && switchState != 4)
                 {
-                    switchState = 3;
+                    switchState = 5;
+                    seconds = 0;
                 }
             }
+            else
+            {
+                if (Time.time > gameTimer + 1)
+                {
+                    gameTimer = Time.time;
+                    seconds++;
+                }
+
+                if (seconds == 3)
+                {
+                    seconds = 0;
+                    if (switchState == 3)
+                    {
+                        switchState = 6;
+                    }
+                    else if (switchState == 6)
+                    {
+                        switchState = 2;
+                    }
+                    else if (switchState == 2)
+                    {
+                        switchState = 3;
+                    }
+                    else if (switchState == 4)
+                    {
+                        switchState = 6;
+                    }
+                    else if (switchState == 5)
+                    {
+                        switchState = 6;
+                    }
+                }
+            }
+            stateMachine.Update();
         }
-        stateMachine.Update();
+        
     }
 
     public void Damage(int dmg)
@@ -117,5 +135,20 @@ public class AI : MonoBehaviour
     public void SetKick(bool state)
     {
         m_canKick = state;
+    }
+
+    IEnumerator Death()
+    {
+        m_isDeath = true;
+        anim.SetBool("IdleAnim", false);
+        anim.SetBool("AttackAnim", false);
+        anim.SetBool("WalkAnim", false);
+        anim.SetBool("KickAnim", false);
+        anim.SetBool("DeathAnim", false);
+        anim.SetBool("JumpAnim", false);
+        anim.SetBool("JumpOffAnim", false);
+        anim.SetBool("DeathAnim", true);
+        yield return new WaitForSeconds(4.5f);
+        Destroy(transform.gameObject);
     }
 }

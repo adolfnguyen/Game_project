@@ -82,7 +82,7 @@ public class Frog : Enemies
     {
         m_isDeath = true;
         enemyAnim.SetBool("JumpAnim", false);
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.1f);
         Destroy(transform.gameObject);
     }
 

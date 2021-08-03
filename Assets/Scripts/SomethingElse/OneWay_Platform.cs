@@ -28,7 +28,7 @@ public class OneWay_Platform : MonoBehaviour
                 if (waitTime <= 0)
                 {
                     effector.rotationalOffset = 180f;
-                    waitTime = 0.75f;
+                    waitTime = 0.3f;
                 }
                 else
                 {
