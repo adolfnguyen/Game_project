@@ -20,6 +20,9 @@ public class Shooter_Follow : Enemies
     private bool m_canShoot;
     private bool m_isDeath = false;
 
+    public GameObject bulletDrop, healingDrop;
+    private int x;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,6 +101,15 @@ public class Shooter_Follow : Enemies
         enemyAnim.SetBool("WalkAnim", false);
         enemyAnim.SetBool("DeathAnim", true);
         yield return new WaitForSeconds(0.85f);
+        x = Random.Range(1, 101);
+        if (x <= 30)
+        {
+            Instantiate(bulletDrop, transform.position, Quaternion.identity);
+        }
+        else if (x >= 90)
+        {
+            Instantiate(healingDrop, transform.position, Quaternion.identity);
+        }
         Destroy(transform.gameObject);
     }
 

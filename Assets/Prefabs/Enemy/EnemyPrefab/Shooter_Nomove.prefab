@@ -80,14 +80,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   attackDamage: 50
-  hitPoint: 500
-  attackRadius: 14
-  attackHeightRadius: 2
+  hitPoint: 750
+  attackRadius: 12
+  attackHeightRadius: 10
   enemyAnim: {fileID: 0}
   playerTransform: {fileID: 0}
   attackDelay: 0.5
   m_firePoint: {fileID: 600027784}
   projectile: {fileID: 6304962397769326034, guid: 83b839c8d10e6ac4db80ee43b402bc45, type: 3}
+  bulletDrop: {fileID: 2029365607758004950, guid: d25fa684ed80bb84481d28ae390120ca, type: 3}
+  healingDrop: {fileID: 1067637737584122274, guid: cc8a22647abb9fb419a56bc05ebe2a8a, type: 3}
 --- !u!212 &6087279405499553925
 SpriteRenderer:
   m_ObjectHideFlags: 0

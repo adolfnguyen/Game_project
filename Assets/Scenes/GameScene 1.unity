@@ -674,7 +674,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Vincezo
+  m_Text: Vincenzo
 --- !u!222 &262037657
 CanvasRenderer:
   m_ObjectHideFlags: 0

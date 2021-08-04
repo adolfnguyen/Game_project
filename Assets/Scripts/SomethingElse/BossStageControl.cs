@@ -71,6 +71,7 @@ public class BossStageControl : MonoBehaviour
         {
             cam.GetComponent<Camerafollow>().SetActiveState(true);
             cam.orthographicSize = 5;
+            EventManager.TriggerEvent(GameEvents.STATECLEAR);
         }
     }
 

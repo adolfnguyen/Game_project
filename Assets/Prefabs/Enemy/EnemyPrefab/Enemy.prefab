@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27df442b4b9bbd4cabef9147c3d66f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 4
   attackDamage: 20
   hitPoint: 100
   attackRadius: 0.8
@@ -128,6 +128,8 @@ MonoBehaviour:
   trigger: {fileID: 8109654627146009922}
   playerTransform: {fileID: 5207967441306602811, guid: eaac258798e0f024c9a960d32925eca9, type: 3}
   enemyAnim: {fileID: 9116497994218103353}
+  bulletDrop: {fileID: 2029365607758004950, guid: d25fa684ed80bb84481d28ae390120ca, type: 3}
+  healingDrop: {fileID: 1067637737584122274, guid: cc8a22647abb9fb419a56bc05ebe2a8a, type: 3}
 --- !u!212 &4887794515492085577
 SpriteRenderer:
   m_ObjectHideFlags: 0

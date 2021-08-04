@@ -84,7 +84,7 @@ public class AI : MonoBehaviour
                     seconds++;
                 }
 
-                if (seconds == 3)
+                if (seconds >= 3)
                 {
                     seconds = 0;
                     if (switchState == 3)

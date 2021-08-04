@@ -60,7 +60,6 @@ public class DroneGeneral : Enemies
             }
             if (Mathf.Abs(playerTransform.position.x - transform.position.x) < 1)
             {
-                Debug.Log("hehe");
                 if (Random.Range(1, fireRate) == 1 && m_canAttack)
                 {
                     StartCoroutine(Shoot());

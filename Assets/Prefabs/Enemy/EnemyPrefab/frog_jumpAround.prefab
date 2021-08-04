@@ -52,7 +52,9 @@ MonoBehaviour:
   enemyAnim: {fileID: 0}
   jumpX: 2
   jumpY: 17
-  timeDelay: 2.5
+  timeDelay: 3
+  bulletDrop: {fileID: 2029365607758004950, guid: d25fa684ed80bb84481d28ae390120ca, type: 3}
+  healingDrop: {fileID: 1067637737584122274, guid: cc8a22647abb9fb419a56bc05ebe2a8a, type: 3}
 --- !u!212 &520956759293600965
 SpriteRenderer:
   m_ObjectHideFlags: 0

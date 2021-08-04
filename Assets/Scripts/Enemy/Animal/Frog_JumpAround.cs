@@ -16,6 +16,9 @@ public class Frog_JumpAround : Enemies
     [SerializeField] float jumpX, jumpY;
     [SerializeField] float timeDelay;
 
+    public GameObject bulletDrop, healingDrop;
+    private int x;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +75,15 @@ public class Frog_JumpAround : Enemies
         m_isDeath = true;
         enemyAnim.SetBool("JumpAnim", false);
         yield return new WaitForSeconds(0.1f);
+        x = Random.Range(1, 101);
+        if (x <= 30)
+        {
+            Instantiate(bulletDrop, transform.position, Quaternion.identity);
+        }
+        else if (x >= 90)
+        {
+            Instantiate(healingDrop, transform.position, Quaternion.identity);
+        }
         Destroy(transform.gameObject);
     }
 

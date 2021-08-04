@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600027783}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.33, y: -0.61, z: 0}
+  m_LocalPosition: {x: -1.65, y: -0.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6087279405499553924}
@@ -88,6 +88,8 @@ MonoBehaviour:
   attackDelay: 0.5
   m_firePoint: {fileID: 600027784}
   projectile: {fileID: 6304962397769326034, guid: 4cc800d324f6a6545b86661f810828d8, type: 3}
+  bulletDrop: {fileID: 2029365607758004950, guid: d25fa684ed80bb84481d28ae390120ca, type: 3}
+  healingDrop: {fileID: 1067637737584122274, guid: cc8a22647abb9fb419a56bc05ebe2a8a, type: 3}
 --- !u!212 &6087279405499553925
 SpriteRenderer:
   m_ObjectHideFlags: 0

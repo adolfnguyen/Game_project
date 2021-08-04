@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652600280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.88, y: -0.07, z: 0}
+  m_LocalPosition: {x: -3.56, y: 0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6470151607461765875}
@@ -178,15 +178,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   attackDamage: 100
-  hitPoint: 2000
-  attackRadius: 20
+  hitPoint: 1500
+  attackRadius: 30
   attackDelay: 3
   playerTransform: {fileID: 0}
   enemyAnim: {fileID: 0}
   attackHeightRadius: 10
   projectile: {fileID: 6971550835769247074, guid: c3e38853a37ef0449919e4338816d849, type: 3}
   throwForce: 3
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 1652600281}
+  bulletDrop: {fileID: 2029365607758004950, guid: d25fa684ed80bb84481d28ae390120ca, type: 3}
+  healingDrop: {fileID: 1067637737584122274, guid: cc8a22647abb9fb419a56bc05ebe2a8a, type: 3}
 --- !u!95 &722167699
 Animator:
   serializedVersion: 3
