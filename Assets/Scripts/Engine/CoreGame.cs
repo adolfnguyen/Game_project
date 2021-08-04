@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 public class CoreGame : MonoBehaviour
 {
     private static int state = 0;
-    private static int heal = 1000;
+    private static int heal = 2500;
     private static int bullet = 30;
-    private static int curheal = 1000;
+    private static int curheal = 2500;
     private static int grenade = 3;
     private static bool pause;
     private static int level;
@@ -38,8 +38,9 @@ public class CoreGame : MonoBehaviour
     public static void ResetStatus()
     {
         state = 0;
-        heal = 1000;
-        Bullet = 20;
+        heal = 2500;
+        Bullet = 30;
+        grenade = 3;
     }
     public static void DecreaseBullet()
     {
@@ -57,17 +58,14 @@ public class CoreGame : MonoBehaviour
         }
     }
     public static void IncreaseBullet()
-    {
-        if (bullet < 20)
-        {
-            bullet++;
-        }
+    {   
+            bullet+=5;   
     }
     public static void IncreaseHeal()
     {
         if (curheal < heal)
         {
-            curheal = curheal + 100;
+            curheal = curheal + 500;
         }
     }
     /*public static bool IsGameOver()

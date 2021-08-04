@@ -27,6 +27,7 @@ public class UIMenu : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        LoadScene(0);
         if (File.Exists(Application.persistentDataPath + "/StoryInfo.txt"))
         {
             string json = File.ReadAllText(Application.persistentDataPath + "/StoryInfo.txt");
