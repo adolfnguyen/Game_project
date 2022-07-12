@@ -85,7 +85,7 @@ public class RunAround : Enemies
         enemyAnim.SetBool("AttackAnim", false);
         enemyAnim.SetBool("WalkAnim", false);
         enemyAnim.SetBool("DeathAnim", true);
-        yield return new WaitForSeconds(0.85f);
+        yield return new WaitForSeconds(0.7f);
         Destroy(transform.gameObject);
     }
     void MoveLeft()

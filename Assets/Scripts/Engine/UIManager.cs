@@ -9,9 +9,9 @@ public class UIManager : MonoBehaviour
     public GameObject pausePanel;
     private bool pause = false;
     public GameObject gameOverPanel;
+    public GameObject stateClaerPanel;
     public Text Bullet;
     public Text Greande;
-    public Text inputText;
     public Slider Heal;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
         EventManager.StartListening(GameEvents.GAMEOVER, new UnityAction(GameOver));
         EventManager.StartListening(GameEvents.UPDATEHEAL, new UnityAction(UpdateHeal));
         EventManager.StartListening(GameEvents.UPDATEGRENADE, new UnityAction(UpdateGrenade));
+        EventManager.StartListening(GameEvents.STATECLEAR, new UnityAction(StateClear));
     }
 
     // Update is called once per frame
@@ -36,11 +37,15 @@ public class UIManager : MonoBehaviour
         if (pause)
         {
             pausePanel.SetActive(true);
+            pausePanel.transform.GetChild(3).gameObject.SetActive(true);
+            pausePanel.transform.GetChild(4).gameObject.SetActive(true);
             Time.timeScale = 0f;
         }
         if (pause == false)
         {
             pausePanel.SetActive(false);
+            pausePanel.transform.GetChild(3).gameObject.SetActive(false);
+            pausePanel.transform.GetChild(4).gameObject.SetActive(false);
             Time.timeScale = 1f;
         }
     }
@@ -67,11 +72,25 @@ public class UIManager : MonoBehaviour
         if (gameOverPanel)
         {
             gameOverPanel.SetActive(true);
+            SoundManager.instance.SetMusic(CoreGame.CurMusic, false, false);
+            SoundManager.instance.SetMusic(NameMusic.DeathMusic, true, true);
             pause = false;
         }
     }
-        public void Resume()
+    public void Resume()
     {
         pause = false;
+    }
+    public void StateClear()
+    {
+        if (stateClaerPanel)
+        {
+            stateClaerPanel.SetActive(true);
+        }
+       
+    }
+    public void Back()
+    {
+        EventManager.TriggerEvent<int>(GameEvents.SCENCETRANSITION, 0);
     }
 }

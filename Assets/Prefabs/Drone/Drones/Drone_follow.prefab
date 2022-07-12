@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 120901155325686391}
   - component: {fileID: 120901155325686280}
   - component: {fileID: 4000774100968977171}
+  - component: {fileID: 981318891}
   m_Layer: 0
   m_Name: Drone_follow
   m_TagString: Enemy
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 120901155325686282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.09, y: 2.14, z: 0}
-  m_LocalScale: {x: 0.2265, y: 0.2265, z: 0.2265}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,14 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff25f4599ed3d4438b32638a536a287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
-  attackDamage: 50
-  hitPoint: 5
-  timer: 15
+  moveSpeed: 8
+  attackDamage: 200
+  hitPoint: 100
+  timer: 20
   playerTransform: {fileID: 0}
   enemyAnim: {fileID: 0}
-  offset: {x: 0, y: 2.8, z: 0}
-  smoothFollow: 1
+  offset: {x: 0, y: 3.1, z: 0}
 --- !u!212 &120901155325686391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -93,7 +93,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: a3dd125cb7e06394b9b64217fe065407, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -146,9 +146,28 @@ Rigidbody2D:
   m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 4.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &981318891
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120901155325686282}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 904d7d61c588dac49ae266a62df53f4a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

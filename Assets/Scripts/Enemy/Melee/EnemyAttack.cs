@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyAttack : Enemies
 {
-  
     public int moveSpeed;
     public int attackDamage;
     public int hitPoint;
@@ -16,6 +15,8 @@ public class EnemyAttack : Enemies
     [SerializeField] Animator enemyAnim;
     SpriteRenderer m_enemySR;
     private bool m_isDeath = false;
+    public GameObject bulletDrop, healingDrop;
+    private int x;
     
     // Start is called before the first frame update
     void Start()
@@ -53,7 +54,7 @@ public class EnemyAttack : Enemies
                     }
                     else
                     {
-                        this.transform.position += new Vector3(-GetMoveSpeed() * Time.deltaTime, 0f, 0f);
+                        transform.position += new Vector3(-GetMoveSpeed() * Time.deltaTime, 0f, 0f);
                         enemyAnim.SetBool("AttackAnim", false);
                         enemyAnim.SetBool("WalkAnim", true);
                         transform.eulerAngles = new Vector3(0, 180, 0);
@@ -69,7 +70,7 @@ public class EnemyAttack : Enemies
                     }
                     else
                     {
-                        this.transform.position += new Vector3(GetMoveSpeed() * Time.deltaTime, 0f, 0f);
+                        transform.position += new Vector3(GetMoveSpeed() * Time.deltaTime, 0f, 0f);
                         enemyAnim.SetBool("AttackAnim", false);
                         enemyAnim.SetBool("WalkAnim", true);
                         transform.eulerAngles = new Vector3(0, 0, 0);
@@ -95,7 +96,16 @@ public class EnemyAttack : Enemies
         enemyAnim.SetBool("AttackAnim", false);
         enemyAnim.SetBool("WalkAnim", false);
         enemyAnim.SetBool("DeathAnim", true);
-        yield return new WaitForSeconds(0.85f);
+        yield return new WaitForSeconds(0.75f);
+        x = Random.Range(1, 101);
+        if (x <= 30)
+        {
+            Instantiate(bulletDrop, transform.position, Quaternion.identity);
+        }
+        else if (x >= 90)
+        {
+            Instantiate(healingDrop, transform.position, Quaternion.identity);
+        }
         Destroy(transform.gameObject);
     }
 }

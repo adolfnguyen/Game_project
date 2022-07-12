@@ -14,15 +14,17 @@ public class Player : MonoBehaviour
     public bool m_ground;
     Rigidbody2D rigidbody;
     public Animator aim;
-     
+
     public Collider2D secondCollider;
     public bool bendown = false;
     private bool m_isInvincible = false;
     private bool death;
+    private bool takedamage;
     [SerializeField] private float invincibilityDurationSeconds;
     [SerializeField] private float invincibilityDeltaTime;
     private SpriteRenderer m_spriteRenderer;
     private Vector3 m_scaleVec = new Vector3(0.38f, 0.3f, 1f);
+    Vector3 pos;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -32,16 +34,19 @@ public class Player : MonoBehaviour
         secondCollider.enabled = false;
         CoreGame.CurHeal = CoreGame.Heal;
     }
+    private void FixedUpdate()
+    {
+       
+    }
     void Start()
     {
-
-
+        pos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         if (CoreGame.CurHeal <= 0)
         {
             if (death == false)
@@ -68,28 +73,30 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            if (!bendown)
+            if (!bendown&& !takedamage)
             {
                 rigidbody.velocity = new Vector2(5.0f, rigidbody.velocity.y);
+                
             }
-
+            
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
 
-            if (!bendown)
+            if (!bendown && !takedamage)
             {
                 rigidbody.velocity = new Vector2(-5.0f, rigidbody.velocity.y);
             }
+           
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
+        // && m_ground
         if (Input.GetKeyDown(KeyCode.UpArrow) && m_ground)
         {
             if (!bendown)
             {
-                rigidbody.velocity = new Vector2(rigidbody.velocity.x, 14.0f);
-                m_ground = false;
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, 14.0f);              
                 aim.SetBool("IsJumping", true);
             }
 
@@ -126,26 +133,52 @@ public class Player : MonoBehaviour
             //m_ground = true;
             //CoreGame.CurHeal -= 50;
             //EventManager.TriggerEvent(GameEvents.UPDATEHEAL);
-            rigidbody.velocity = new Vector2(-10f, 5f);
-            Damage(50);
             
+            Damage(50);
+        }
+        if (collision.gameObject.name.Equals("MovingPlatform"))
+        {
+            transform.parent = collision.transform;
         }
     }
-    
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Equals("MovingPlatform"))
+        {
+            transform.parent = null;
+        }
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            m_ground = false;
+        }
+    }
 
     public void Damage(int dmg)
     {
         if (m_isInvincible) return;
         CoreGame.CurHeal -= dmg;
-        Debug.Log("nhập sát thương");
+        rigidbody.velocity = Vector2.zero;
+        takedamage = true;
+        Debug.Log("nhận sát thương");
+        if (transform.eulerAngles == new Vector3(0, 0, 0))
+        {
+            rigidbody.AddForce(Vector2.right * -50 + Vector2.up * 20);
+        }
+        else { rigidbody.velocity = new Vector2(10f, 5f); }
+        
         EventManager.TriggerEvent(GameEvents.UPDATEHEAL);
         if (CoreGame.CurHeal <= 0)
         {
 
             return;
         }
-
+        StartCoroutine(SetTakeDamage());
         StartCoroutine(BecomeTemporarilyInvincible());
+    }
+    private IEnumerator SetTakeDamage()
+    {
+        yield return new WaitForSeconds(0.5f);
+        takedamage = false;
     }
     private IEnumerator BecomeTemporarilyInvincible()
     {
@@ -178,6 +211,5 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         //EventManager.TriggerEvent(GameEvents.GAMEOVER);
-
     }
 }

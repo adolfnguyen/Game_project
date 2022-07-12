@@ -8,11 +8,14 @@ public class Tanker : Enemies
     public int attackDamage;
     public int hitPoint;
     public float attackRadius;
+    public float attackHeightRadius;
     [SerializeField] Animator enemyAnim;
     [SerializeField] Transform playerTransform;
     SpriteRenderer m_enemySR;
     public Collider2D trigger;
     private bool m_isDeath = false;
+    public GameObject bulletDrop, healingDrop;
+    private int x;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,7 @@ public class Tanker : Enemies
         SetAttackDamage(attackDamage);
         SetHitPoint(hitPoint);
         SetAttackRadius(attackRadius);
+        SetAttackHeightRadius(attackHeightRadius);
         trigger.enabled = false;
     }
 
@@ -78,6 +82,15 @@ public class Tanker : Enemies
         enemyAnim.SetBool("WalkAnim", false);
         enemyAnim.SetBool("DeathAnim", true);
         yield return new WaitForSeconds(0.85f);
+        x = Random.Range(1, 101);
+        if (x <= 30)
+        {
+            Instantiate(bulletDrop, transform.position, Quaternion.identity);
+        }
+        else if (x >= 90)
+        {
+            Instantiate(healingDrop, transform.position, Quaternion.identity);
+        }
         Destroy(transform.gameObject);
     }
 }

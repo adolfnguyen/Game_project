@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 436712746422353747}
   - component: {fileID: 436712746422353746}
   - component: {fileID: 4011951758194731811}
+  - component: {fileID: 7809000054798258316}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -28,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436712746422353749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.65, y: -1.1713, z: -6.5831995}
-  m_LocalScale: {x: 0.36, y: 0.23, z: 1}
+  m_LocalPosition: {x: -0.6424, y: -1.2401, z: -6.5831995}
+  m_LocalScale: {x: 0.36889204, y: 0.32901502, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -136,3 +137,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   dmg: 75
+--- !u!95 &7809000054798258316
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436712746422353749}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5605a5f7f8d75045b5758f9ed81e125, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

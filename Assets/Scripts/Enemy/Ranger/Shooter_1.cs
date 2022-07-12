@@ -8,6 +8,7 @@ public class Shooter_1 : Enemies
     public int attackDamage;
     public int hitPoint;
     public float attackRadius;
+    public float attackHeightRadius;
     public GameObject projectile;
     [SerializeField] Animator enemyAnim;
     [SerializeField] Transform playerTransform;
@@ -21,6 +22,9 @@ public class Shooter_1 : Enemies
 
     [SerializeField] private Transform[] waypoints;
 
+    public GameObject bulletDrop, healingDrop;
+    private int x;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +35,7 @@ public class Shooter_1 : Enemies
         SetAttackDamage(attackDamage);
         SetHitPoint(hitPoint);
         SetAttackRadius(attackRadius);
+        SetAttackHeightRadius(attackHeightRadius);
         SetAttackDelay(attackDelay);
         m_canShoot = true;
     }
@@ -87,7 +92,9 @@ public class Shooter_1 : Enemies
     IEnumerator EnemyShoot_L()
     {
         enemyAnim.SetBool("WalkAnim", false);
-        yield return new WaitForSeconds(attackDelay);
+        if (transform.eulerAngles == new Vector3(0, 0, 0))
+            yield return new WaitForSeconds(attackDelay*2);
+        else yield return new WaitForSeconds(attackDelay);
         transform.eulerAngles = new Vector3(0, 180, 0);
         Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
         enemyAnim.SetBool("AttackAnim", true);
@@ -99,7 +106,9 @@ public class Shooter_1 : Enemies
     IEnumerator EnemyShoot_R()
     {
         enemyAnim.SetBool("WalkAnim", false);
-        yield return new WaitForSeconds(attackDelay);
+        if (transform.eulerAngles == new Vector3(0, 180, 0))
+            yield return new WaitForSeconds(attackDelay*2);
+        else yield return new WaitForSeconds(attackDelay);
         transform.eulerAngles = new Vector3(0, 0, 0);
         Instantiate(projectile, m_firePoint.position, m_firePoint.rotation);
         enemyAnim.SetBool("AttackAnim", true);
@@ -114,6 +123,15 @@ public class Shooter_1 : Enemies
         enemyAnim.SetBool("WalkAnim", false);
         enemyAnim.SetBool("DeathAnim", true);
         yield return new WaitForSeconds(0.85f);
+        x = Random.Range(1, 101);
+        if (x <= 30)
+        {
+            Instantiate(bulletDrop, transform.position, Quaternion.identity);
+        }
+        else if (x >= 90)
+        {
+            Instantiate(healingDrop, transform.position, Quaternion.identity);
+        }
         Destroy(transform.gameObject);
     }
     void MoveLeft()

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet_2 : MonoBehaviour
 {
-    public float speed;
     public int dmg;
     Rigidbody2D bl;
     public float shootingPower;
@@ -16,13 +15,13 @@ public class Bullet_2 : MonoBehaviour
     {
         bl = GetComponent<Rigidbody2D>();
         playerTransform = FindObjectOfType<Player>().GetComponent<Transform>();
-        m_direction = transform.position - playerTransform.position;
+        m_direction = (playerTransform.position - transform.position).normalized * shootingPower;
     }
 
     // Update is called once per frame
     void Update()
     {
-        bl.velocity = -m_direction * shootingPower;
+        bl.velocity = new Vector2(m_direction.x, m_direction.y);
         Destroy(transform.gameObject, 1.5f);
     }
     private void OnTriggerEnter2D(Collider2D hitintro)

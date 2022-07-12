@@ -19,6 +19,8 @@ public class Thrower : Enemies
     private bool m_canAttack;
     public Transform firePoint;
     private bool m_isDeath = false;
+    public GameObject bulletDrop, healingDrop;
+    private int x;
 
     // Start is called before the first frame update
     void Start()
@@ -79,8 +81,8 @@ public class Thrower : Enemies
     IEnumerator AttackDelay()
     {
         yield return new WaitForSeconds(0.37f);
+        projectile.GetComponent<ThrowerProjectile>().f = Vector2.left * throwForce;
         Instantiate(projectile, firePoint.position, Quaternion.identity);
-        projectile.GetComponent<Rigidbody2D>().AddForce(Vector2.left * throwForce);
         yield return new WaitForSeconds(0.27f);
         enemyAnim.SetBool("AttackAnim", false);
         yield return new WaitForSeconds(attackDelay - 0.57f);
@@ -94,6 +96,15 @@ public class Thrower : Enemies
         enemyAnim.SetBool("WalkAnim", false);
         enemyAnim.SetBool("DeathAnim", true);
         yield return new WaitForSeconds(0.85f);
+        x = Random.Range(1, 101);
+        if (x <= 30)
+        {
+            Instantiate(bulletDrop, transform.position, Quaternion.identity);
+        }
+        else if (x >= 90)
+        {
+            Instantiate(healingDrop, transform.position, Quaternion.identity);
+        }
         Destroy(transform.gameObject);
     }
 }
